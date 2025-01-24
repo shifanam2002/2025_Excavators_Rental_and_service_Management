@@ -1,0 +1,101 @@
+{% include 'header.html' %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Registration</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="background">
+
+    <div >
+        <div class="register-containers">
+            <form class="driv_form" method="post" enctype="multipart/form-data" onsubmit="return validatePassword()">
+                <h2 >Driver Registration</h2>
+                {% csrf_token %}
+
+                <!-- Step 1: Driver Details -->
+                <div class="form-step active" id="step-1">
+                    <h3 style="font-size: 20px;">Driver Details</h3>
+                    <div class="form-group">
+                        {{ form.username.label_tag }} {{ form.username }}
+                        {% if form.username.errors %}
+                            <span class="text-danger">*</span>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.email.label_tag }} {{ form.email }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.phone.label_tag }} {{ form.phone }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.experience.label_tag }} {{ form.experience }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.specialization.label_tag }} {{ form.specialization }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.image.label_tag }} {{ form.image }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.Location.label_tag }} {{ form.Location }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.district.label_tag }} {{ form.district }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.password.label_tag }} {{ form.password }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.confirm_password.label_tag }} {{ form.confirm_password }}
+                    </div>
+                    <button type="button" class="next-btn" onclick="nextStep(1)">Next</button>
+                </div>
+
+                <!-- Step 2: Driver License Details -->
+                <div class="form-step" id="step-2" style="display: none;">
+                    <h3>Driver License Details</h3>
+                    <div class="form-group">
+                        {{ form.license_number.label_tag }} {{ form.license_number }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.certificates.label_tag }} {{ form.certificates }}
+                    </div>
+                    <div class="form-group2" style="font-size: 1.2em;">
+                        {{ form.license_type.label_tag }} {{ form.license_category }}
+                    </div>
+                    <button type="button" class="prev-btn" onclick="prevStep(2)">Previous</button>
+                    <button type="button" class="next-btn" onclick="nextStep(2)">Next</button>
+                </div>
+
+                <!-- Step 3: Payment Details -->
+                <div class="form-step" id="step-3" style="display: none;">
+                    <h3>Payment Details</h3>
+                    <div class="form-group">
+                        {{ form.payment_mode.label_tag }} {{ form.payment_mode }}
+                    </div>
+                    <div id="payment-amount-section" class="form-group" style="display: none;">
+                      <!-- <label for="id_payment_amount">Enter Payment Amount (₹):</label> -->
+                      <!-- <input type="number" name="payment_amount" id="id_payment_amount" class="form-control" placeholder="Enter amount (₹)"> -->
+                        {{ form.payment_amount }}
+                    </div>
+                    <!-- <pre>{{ form.errors }}</pre> -->
+                    <button type="button" class="prev-btn" onclick="prevStep(3)">Previous</button>
+                    <button type="submit"  class="submit-btn bubbb">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+   
+</body>
+</html>
+
+{% include 'footer.html' %}

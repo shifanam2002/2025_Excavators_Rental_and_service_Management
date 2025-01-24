@@ -1,0 +1,103 @@
+.driver-card {
+    background: #ffffff; /* White background */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 300px;
+    /* text-align: center; */
+    overflow: hidden;
+    text-align: left;
+  }
+
+  .driver-card:hover {
+    transform: translateY(-10px); /* Lift card on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Deeper shadow */
+  }
+  .card-title {
+    /* font-size: 2rem; Increased font size */
+    background: linear-gradient(to right, #ff8c00, #ff0080);
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+
+  /* Gradient for Details */
+  .char {
+    /* font-size: 1.7rem; Slightly larger font size */
+    background: linear-gradient(to right, #061f35, #08bdc7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 8px 0;
+    /* font-weight: 500; */
+     }
+
+  .char strong {
+    font-weight: bold;
+  }
+  /* Card Content */
+  .card-body {
+    padding: 20px;
+  }
+
+  .card-title {
+    /* font-size: 2rem; */
+    color: #333333; /* Darker text */
+    margin-bottom: 10px;
+  }
+
+  .char {
+    color: #555555; /* Gray text */
+    font-size: 1rem;
+    margin: 5px 0;
+  }
+
+  .char strong {
+    color: #222222; /* Slightly darker for labels */
+    /* font-weight: bold; */
+    /* font-size: 1.5rem; */
+  }
+
+
+
+  .btn-success {
+    background-color: #28a745; /* Green */
+    color: white;
+  }
+
+  .btn-success:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+  }
+
+  .btn-primary {
+    background-color: #007bff; /* Blue */
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .row {
+      flex-direction: column;
+      align-items: last baseline;
+    }
+
+    .driver-card {
+      width: 90%;
+    }
+  }
+  .card-body{
+    text-align: left;
+  } 
+  p.char{
+    font-size: 18px ;
+  }
+  .char strong::after {
+    content: " :";
+    margin-left: 7px;     
+}

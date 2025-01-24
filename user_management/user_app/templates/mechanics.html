@@ -1,0 +1,90 @@
+{% include 'header.html' %}
+
+{% load static %}
+
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mech.css' %}">
+    <script src="../static/fonts/script.js" defer></script>
+
+ </head>
+ <body class="background">
+
+    <div style="height: 900px;">
+        <div class="regi-container">
+            <form class="driv_form" method="post" enctype="multipart/form-data" onsubmit="return validatePassword()">
+                <h2 >Mechanic Registration</h2>
+                {% csrf_token %}
+    
+                <div class="form-section">
+                    <div class="form-left">
+                        {{ form.username.label_tag }}{{ form.username }}<br>
+                        {{ form.email.label_tag }}{{ form.email }}<br>
+                        {{ form.password.label_tag }}{{ form.password }}<br>
+                        {{ form.confirm_password.label_tag }}{{ form.confirm_password }}<br>
+                        {{ form.phone.label_tag }}{{ form.phone }}<br>
+                        {{ form.place.label_tag }}{{ form.place }}<br>
+                        {{ form.district.label_tag }}{{ form.district }}<br>
+
+                    </div>
+    
+                    <div class="form-right">
+                        {{ form.area_of_expertise.label_tag }}{{ form.area_of_expertise }}<br>
+                        {{ form.services.label_tag }}{{ form.services }}<br> 
+                        {{ form.experience.label_tag }}{{ form.experience }}<br>
+                        {{ form.certificates.label_tag }}{{ form.certificates }}<br>
+                        {{ form.image.label_tag }}{{ form.image }}<br>
+                     
+                        </div>
+                        <!-- <button type="button" class="btn  safety-add" onclick="addSafety()">➕</button> -->
+                    </div>
+            
+             
+                
+                </div>
+    
+                <br>
+                <button type="submit" class="bubbb" type="button">Register</button>
+                <br>
+                <p style="margin-left: 10%;">Already have an account? <a href="/login">Login</a> here</p>
+            </form>
+        </div>
+    </div>
+    
+
+
+    <script>
+        const maxForms = 3;
+        let currentForms = 0;
+
+        function addSafety() {
+            const container = document.getElementById('safety-formset');
+            if(currentForms < maxForms) {
+
+                const inputGroup = document.createElement('div');
+                inputGroup.className = 'position-relative mb-4';
+                inputGroup.innerHTML = `
+                    <input type="text" name="safety_precaution" class=" safety-input" >
+                    <button type="button" class="btn btn-close safety-remove" aria-label="Close" onclick="removeInput(this)">❌</button>
+                `;
+                container.appendChild(inputGroup);
+                currentForms++;
+            } else {
+                alert(`You can only add ${maxForms} safety precautions`);
+            }
+        }
+    
+        function removeInput(button) {
+            button.parentElement.remove();
+            currentForms--;
+        }
+    </script>
+
+
+{% include 'footer.html' %}

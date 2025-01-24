@@ -1,0 +1,348 @@
+
+
+.header-container {
+    display: flex;
+    /* align-items: center; */
+    /* width: 1000px; */
+    /* margin: 40px auto; */
+    /* margin-left: 20px; */
+    /* background-color: aquamarine; */
+}
+
+/* Excavator image styling (left side) */
+.header-container img {
+    width: 500px;
+    height: auto;
+    border-radius: 4px;
+    margin-right: 200px; /* Space between image and text */  
+}
+
+/* Text container with different background color (right side) */
+.text-container {
+    background-color: #f2f2f2; /* Light gray background for description */
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    height: 500px;
+}
+
+/* Title and description styling */
+.text-container h1 {
+    font-size: 28px;
+    margin: 0;
+    color: #333; /* Dark color for contrast */
+}
+
+.text-container p {
+    margin: 10px 0 0;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Available excavators list styling */
+.excavator-list {
+    margin-top: 20px;
+}
+
+.excavator-item {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.excavator-item img {
+    width: 150px;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* ************************************************************************************************************ */
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px;
+  }
+  
+  /* Card Styles */
+  .card {
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 550px;
+  }
+   img{
+    /* width: auto; */
+    height: 200px;
+   }
+   .prices{
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(27, 29, 27);
+   }
+
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Card Header */
+  .card-header {
+    position: relative;
+  }
+  
+  .card-header .badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: orange;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+  
+  .card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  
+  /* Card Body */
+  .card-body {
+    padding: 15px;
+    height: 220px;
+  }
+ 
+  
+  .card-title {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #2231ff;
+  }
+  
+  .prices {
+    font-size: 16px;
+    font-weight: bold;
+    color: #b1310a;
+  }
+  
+  .supplier,
+  .location,
+  .rating {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #555;
+  }
+  .namee{
+    font-size: 1.1rem;
+  }
+  
+  /* Card Footer */
+  .card-footer {
+    /* padding: 10px 15px; */
+    background-color: #ffffff;
+    text-align: center;
+    /* height: 25px; */
+    border: none;
+  
+
+  }
+  
+  .contact-btn {
+    background-color: teal;
+    color: white;
+    /* padding: 10px 10px; */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    height: 40px;
+  }
+  
+  .contact-btn:hover {
+    background-color: darkcyan;
+  }
+  
+  /* **************************************************************************************************** */
+
+
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between buttons */
+}
+
+button {
+    width: 200px;
+    height: 60px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(231, 221, 221, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+button:active {
+    background-color: #003f88;
+    transform: translateY(1px);
+}
+.exca{
+    margin-top: 20px;
+}
+.frm{
+    margin-left: 200px;
+    margin-top: 50px;
+}
+.exca_add{
+    font-size: 14px;
+    width: 600px;
+}
+h1{
+    color: #003f88;
+}
+.exca_add input{
+    width: 500px;
+    padding: 4px;
+}
+/* select {
+  width: 500px;
+  padding: 6px;
+} */
+.frm {
+  display: none; /* Hide forms by default */
+  /* flex-grow: 1; */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.frms {
+
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* width: 800px; */
+  /* margin-left: 300px; */
+  margin-top: 50px;
+}
+.but{
+  width: 200px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #0d66be;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(231, 221, 221, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* ***************************************************************************************************** */
+
+.modal-title{
+  margin-left: 180px;
+}
+.btn {
+  font-size: 15 px;
+  font-weight: bold;
+  color: #eff1ef; /* Example color */
+  text-align: center;
+  padding-bottom: 5px;
+  height: 40px;
+  background-color: rgb(20, 140, 156);
+  border:none;
+}
+.btn:hover{
+  background-color: rgb(16, 104, 116);
+
+}
+
+
+.card shadow{
+  width: 5%;
+  height: 30px;
+}
+
+.close{
+  width: auto;
+  height: fit-content;
+  color: red;
+}
+.close:hover{
+  background-color: white;
+}
+.modal-header{
+  color: indianred;
+}
+
+
+.Reg-form input[type="number"]
+{
+    padding: 7px;
+    margin: 2px 0;
+    width: 100%;  /* Ensures all input fields take full width of the form */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.view_list{
+  margin-left: 400px;
+  margin-top: -38px;
+  height: 40px;
+  color: #ffffff;
+  background-color: #ff1004;
+}
+.view_list a{
+  color: white;
+}
+.view_list:hover{
+  background-color: #be1209;
+  }
+
+.view_list a:hover{
+  text-decoration: none;
+}
+.view_lists{
+  margin-left: 400px;
+  margin-top: -80px;
+  height: 40px;
+  color: #ffffff;
+  background-color: #ff1004;
+}
+.view_lists a{
+  color: white;
+}
+.view_lists:hover{
+  background-color: #be1209;
+  }
+
+.view_lists a:hover{
+  text-decoration: none;
+}

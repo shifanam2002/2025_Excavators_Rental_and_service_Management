@@ -1,0 +1,47 @@
+{% include 'header.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>MyModel List</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <h1>MyModel List</h1>
+            <!-- <a href="{% url 'model_create' %}" class="btn btn-primary mb-3">Create New Model</a> -->
+            <table class="table table-striped">
+                <thead> 
+                    <tr>
+                        <!-- <th>Image</th> -->
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Place</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for mymodel in mymodels %}
+                        <tr>
+                      
+                            <!-- <td><img src="{{ mymodel.profile_image.url }}" alt="{{ mymodel.username }}" class="img-thumbnail" style="max-width: 200px;"></td> -->
+                            <td>{{ mymodel.username }}</td> 
+                            <td>{{ mymodel.email }}</td>
+                            <td>{{ mymodel.phone }}</td>
+                            <td>{{ mymodel.place }}</td>
+                            <td><a href="{% url 'model_update' pk=mymodel.id %}">Update</a></td>
+                            <td><a href="{% url 'model_delete' mymodel.id %}">Delete</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
+
+{% include 'footer.html' %}
+
+
+

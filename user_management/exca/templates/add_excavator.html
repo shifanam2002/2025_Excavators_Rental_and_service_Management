@@ -1,0 +1,64 @@
+
+{% include 'header.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Excavator</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/excalator.css' %}">
+
+</head>
+<body>
+<div style="display: flex;">
+    <div class="button-container">
+        <button class="exca" onclick="showForm('exca_form')">Add Excavator</button>
+        <button onclick="showForm('category_form')">Add Category</button>
+        <a href="{% url 'spare_parts' %}"><button>Add spare Parts</button> </a>
+
+    </div>
+    <div class=" frm" id="exca_form">
+        <h1>Add Excavator</h1><br>
+        <form method="POST" enctype="multipart/form-data" class="exca_add Reg-form" >
+            {% csrf_token %}
+            {{ exca_form.as_p }}
+            <button type="submit" class="but" name="add_excavator">Add Excavators</button>
+            <button class="view_list"><a href="/view_exca">view List</a></button>
+
+        </form>
+    </div>
+
+
+<div class="frm" id="category_form" style="display: none;">
+    <h1>Add Category</h1><br>
+    <form method="POST" enctype="multipart/form-data" class="exca_add Reg-form">
+        {% csrf_token %}
+        {{ category_form.as_p }}
+        <button type="submit" class="but" name="add_category">Add Category</button>
+    </form>
+    <button class="view_lists"><a href="/view_cate">view List</a></button>
+
+</div>
+</div>
+
+
+
+
+<script>
+    // Function to toggle the visibility of forms
+    function showForm(formId) {
+        // Hide all forms
+        document.getElementById('exca_form').style.display = 'none';
+        document.getElementById('category_form').style.display = 'none';
+
+        // Show the selected form
+        document.getElementById(formId).style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
+
+{% include 'footer.html' %}

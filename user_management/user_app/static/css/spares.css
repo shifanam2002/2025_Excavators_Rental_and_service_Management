@@ -1,0 +1,327 @@
+.containers {
+    width: 90%;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.cards {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease;
+    height: 400px;
+    display:flexbox;
+}
+
+.cards:hover {
+    transform: translateY(-10px);
+}
+
+.cards img {
+    width: 100;
+    height: 150px;
+    object-fit: cover;
+}
+
+.cards h3 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #34495e;
+    /* margin-top: 30px; */
+    position:relative
+}
+
+.cards p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 14px;
+    margin-top: 10px;
+
+}
+
+.cards .price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.cards .btn {
+    display: block;
+    padding: 10px 15px;
+    background: #007bff;
+    color: #fff;
+    text-decoration: none;
+    margin: 10px auto;
+    border-radius: 5px;
+    width: fit-content;
+    transition: background 0.3s;
+    ;
+}
+
+.cards .btn:hover {
+    background: #0056b3;
+}
+h2{
+    margin-left: 500px;
+    margin-bottom: 60px;
+    margin-top: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(93, 139, 124);}
+
+
+
+/* ******************************************************************************************************** */
+
+.popup-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px; /* Set a fixed width */
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    height: 660px;
+    
+}
+
+
+.form-container {
+    padding: 20px;
+}
+
+.close-btn {
+    cursor: pointer;
+    font-size: 24px;
+    color: #34495e;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+
+
+.form-container h3{
+    color: blue;
+    font-size: 25px;} 
+
+input, select, textarea {
+    width: 100%; 
+    padding: 8px;
+    /* margin: 8px 0; Smaller margin */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.form-groups select{
+    height: 50px;
+}
+
+.submit-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+label{
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size: 16px;}
+
+input::placeholder{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+}
+textarea::placeholder{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+}
+/* select{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+} */
+
+
+h1 {
+    text-align: center;
+    color: #34495e;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+table, th, td {
+    border: 1px solid #ddd;
+}
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #34495e;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+} */
+
+/* button:hover {
+    background-color: #0056b3;
+} */
+
+img {
+    max-height: 150px;
+    margin-top: 10px;
+}
+
+a {
+    text-align: center;
+    display: block;
+    margin-top: 15px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px; 
+    margin-top: 20px;
+}
+
+/* .btn {
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+
+} */
+.add-to-cart {
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+    /* height: 30px; */
+    font-size: 12px;
+    display:end;
+
+}
+.buy-now {
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+    /* height: 30px; */
+    font-size: 12px;
+
+
+}
+
+.add-to-cart {
+    background-color: #4CAF50; /* Green */
+    color: white; /* Text color */
+}
+
+.add-to-cart:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.buy-now {
+    background-color: #2196F3; /* Blue */
+    color: white; /* Text color */
+}
+
+.buy-now:hover {
+    background-color: #0b7dda; /* Darker blue on hover */
+}
+
+.contact {
+    background-color: #f44336; /* Red */
+    color: white; /* Text color */
+    padding: 8px 16px; /* Smaller padding for Contact button */
+    /* height: 10px; */
+    font-size: 12px;
+    margin-top: 40px;
+}
+
+.contact:hover {
+    background-color: #da190b; /* Darker red on hover */
+}
+
+
+.view-cart {
+    /* background-color: #c5bdb0;  */
+    color: rgb(109, 105, 105); 
+    /* padding: 10px 20px;  */
+    border: none; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    text-align: center; 
+    display: inline-block; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+    /* margin-top: 0; */
+    font-size: 22px;
+    margin-left: 1100px;
+    margin-top: -170px
+}
+
+.view-cart:hover {
+    background-color: #ece7de; /* Darker orange on hover */
+}

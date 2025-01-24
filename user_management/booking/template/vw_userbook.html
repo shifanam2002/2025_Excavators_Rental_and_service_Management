@@ -1,0 +1,28 @@
+{% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmed Bookings</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Your Confirmed Bookings</h1>
+    <div class="booking-container">
+        {% if bookings %}
+            {% for booking in bookings %}
+                <div class="booking-details">
+                    <p><strong>Booking ID:</strong> {{ booking.id }}</p>
+                    <p><strong>Driver:</strong> {{ booking.driver.name }}</p>
+                    <p><strong>Status:</strong> Confirmed</p>
+                    <p><strong>Confirmed Date:</strong> {{ booking.date_confirmed }}</p>
+                </div>
+                <hr>
+            {% endfor %}
+        {% else %}
+            <p>No confirmed bookings found.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

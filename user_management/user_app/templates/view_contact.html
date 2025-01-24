@@ -1,0 +1,36 @@
+{% include 'header.html' %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/spares.css' %}">
+
+
+<h1>Enquries</h1><br><br>
+{% if contacts %}
+<div class="conatiner">
+    <table class="table table-bordered ">
+        <thead>
+            <tr>
+                <th>Customer Name</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Phone</th>
+    
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+                <tr>
+                    <td>{{ contact.name }}</td>
+                    <td>{{ contact.email }}</td>
+                    <td>{{ contact.message }}</td>
+                    <td>{{ contact.phone }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+
+
+{% include 'footer.html' %}

@@ -1,0 +1,309 @@
+.driver-card {
+    transition: transform 0.3s;
+  }
+  .driver-card:hover {
+    transform: scale(1.05);
+  }
+  .driver-photo {                          
+    /* width: 100%; */
+    /* height: 200px; */
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+  }
+  body {
+  background-image: url(../static/Images/back.jpeg); 
+  background-size:cover;
+  color: #f8f9fa; /* Light color for text */
+}
+
+.container h2, .card-title {
+  color: #f8b400; /* Yellow text for headers to match excavator theme */
+}
+
+.card {
+  background-color: #ebebeb; /* Slightly lighter grey for card backgrounds */
+  border: none;
+}
+
+.driver-photo {
+  /* width: 100%;  */
+  /* height: 200px;  */
+  object-fit: cover; 
+  /* border-radius: 100%;  */
+  /* margin-top: 20px;  */
+  /* border: 1px solid #f7f5f1; */
+ 
+}
+.modals {
+  display: none;
+  position: fixed;
+  z-index: 1050;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Modal content container */
+.modals-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 90%; /* Adjust width as needed */
+  max-width: 500px; /* Limit max width */
+  max-height: 80%; /* Limit height to viewport */
+  overflow-y: auto; /* Enable vertical scrolling */
+  position: relative;
+  
+}
+
+.models-content{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.models-content::-webkit-scrollbar{
+  display: none;
+}
+
+/* Close button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+}
+
+/* Form styles */
+.book-data {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #218838;
+}
+.book-data label {
+          display: block;
+          font-weight: bold;
+          color: black;
+      }
+.book-data input {
+          width: 100%;
+          padding: 8px;
+          box-sizing: border-box;
+          color: black;
+      }
+/* .submit-button {
+          background-color: #4CAF50;
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+      }
+.submit-button:hover {
+          background-color: #45a049;
+      } */
+
+.modal-body {
+      display: flex; 
+      gap: 20px;
+      /* flex-direction: column;  */
+      align-items: flex-start;
+      font-family: 'Poppins', sans-serif; 
+}
+#image {
+        border-radius: 8px; 
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+      }
+     
+.details{
+      display: flex;
+      flex-direction: column; /* Stack the details vertically */
+      gap: 10px;
+      font-family: 'Poppins', sans-serif;
+}
+
+.details p{
+  /* font-family: 'Poppins', sans-serif; */
+  margin: 0;
+}
+.details strong{
+  color: #0056b3;
+}
+.details .rating {
+  color: #f4b400; /* Yellow color for ratings */
+  font-weight: bold;
+}
+
+.details .price {
+  color: #28a745; /* Green for pricing details */
+  font-weight: bold;
+}
+
+/* Button Styling */
+.book-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff; /* Blue button */
+  color: #fff; /* White text */
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.book-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+.card-body p{
+  font-size: 15px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.card-body details{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+}
+h5 {
+  text-transform: uppercase;
+  margin-top: 50px;
+}
+
+.container th{
+  /* font: 1.6em sans-serif; */
+  font-weight: bold;
+}
+
+
+
+
+
+/* ****************************************************************************************************** */
+
+.driver-card {
+  background: #ffffff; /* White background */
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 300px;
+  /* text-align: center; */
+  overflow: hidden;
+  text-align: left;
+}
+
+.driver-card:hover {
+  transform: translateY(-10px); /* Lift card on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Deeper shadow */
+}
+.card-title {
+  font-size: 2rem; /* Increased font size */
+  background: linear-gradient(to right, #ff8c00, #ff0080);
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Gradient for Details */
+.char {
+  /* font-size: 1.7rem; Slightly larger font size */
+  background: linear-gradient(to right, #061f35, #08bdc7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 8px 0;
+  /* font-weight: 500; */
+   }
+
+.char strong {
+  font-weight: bold;
+}
+/* Card Content */
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 2rem;
+  color: #333333; /* Darker text */
+  margin-bottom: 10px;
+}
+
+.char {
+  color: #555555; /* Gray text */
+  font-size: 1rem;
+  margin: 5px 0;
+}
+
+.char strong {
+  color: #222222; /* Slightly darker for labels */
+  font-weight: bold;
+  /* font-size: 1.5rem; */
+}
+
+
+
+.btn-success {
+  background-color: #28a745; /* Green */
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+.btn-primary {
+  background-color: #007bff; /* Blue */
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    align-items: last baseline;
+  }
+
+  .driver-card {
+    width: 90%;
+  }
+}
+.card-body{
+  text-align: left;
+} 
+p.char{
+  font-size: 18px ;
+}
+.char strong::after {
+  content: " :";
+  margin-left: 7px;     
+}

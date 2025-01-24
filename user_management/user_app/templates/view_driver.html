@@ -1,0 +1,158 @@
+{% include 'header.html' %}
+{% load static %}
+
+<head>
+  <title>View Drivers</title>
+  <!-- <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"> -->
+  <link rel="stylesheet" href="{% static 'css/driver.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/driver_form.css' %}">
+  <!-- <link rel="stylesheet" href="{% static 'css/mechanic.css' %}"> -->
+
+  
+</head>
+<body>
+  <form method="get" action="{% url 'user_view_driver' %}">
+    <div style="display: flex; gap: 10px; align-items: center;">
+            <!-- District Dropdown -->
+            <select name="district" class="form-control">
+                <option value="">Select District</option>
+                <option value="">All Locations</option>
+                <option value="Kasaragod"{% if request.GET.district == "Kasaragod" %}selected{% endif %}>Kasaragod</option>
+                <option value="Kannur" {% if request.GET.district == "Kannur" %}selected{% endif %}>Kannur</option>
+                <option value="Wayanad" {% if request.GET.district == "Wayanad" %}selected{% endif %}>Wayanad</option>
+                <option value="Kozhikode" {% if request.GET.district == "Kozhikode" %}selected{% endif %}>Kozhikode</option>
+                <option value="Malappuram" {% if request.GET.district == "Malappuram" %}selected{% endif %}>Malappuram</option>
+                <option value="Palakkad" {% if request.GET.district == "Palakkad" %}selected{% endif %}>Palakkad</option>
+                <option value="Thrissur"{% if request.GET.district == "Thrissur" %}selected{% endif %}>Thrissur</option>
+                <option value="Ernakulam" {% if request.GET.district == "Ernakulam" %}selected{% endif %}>Ernakulam</option>
+                <option value="Idukki" {% if request.GET.district == "Idukki" %}selected{% endif %}>Idukki</option>
+                <option value="Kottayam" {% if request.GET.district == "Kottayam" %}selected{% endif %}>Kottayam</option>
+                <option value="Alappuzha" {% if request.GET.district == "Alappuzha" %}selected{% endif %}>Alappuzha</option>
+                <option value="Pathanamthitta" {% if request.GET.district == "Pathanamthitta" %}selected{% endif %}>Pathanamthitta</option>
+                <option value="Thiruvananthapuram" {% if request.GET.district == "Thiruvananthapuram" %}selected{% endif %}>Thiruvananthapuram</option>
+            </select>
+        
+            <select name="area_of_expertise" class="form-control">
+                <option value="">Select your area</option>
+                <option value="">All Area of Expertises</option>
+                <option value="Engine Repair and Maintenance" {% if request.GET.area_of_expertise == "Engine Repair and Maintenance" %}selected{% endif %}>Engine Repair and Maintenance</option>
+                <option value="Hydraulic System Maintenance" {% if request.GET.area_of_expertise == "Hydraulic System Maintenance" %}selected{% endif %}>Hydraulic System Maintenance</option>
+                <option value="Cylinder Repair and Replacement" {% if request.GET.area_of_expertise == "Cylinder Repair and Replacement" %}selected{% endif %}>Cylinder Repair and Replacement</option>
+                <option value="Undercarriage Repair" {% if request.GET.area_of_expertise == "Undercarriage Repair" %}selected{% endif %}>Undercarriage Repair</option>
+                <option value="Welding and Fabrication Services" {% if request.GET.area_of_expertise == "Welding and Fabrication Services" %}selected{% endif %}>Welding and Fabrication Services</option>
+                <option value="Electrical System Repairs" {% if request.GET.area_of_expertise == "Electrical System Repairs" %}selected{% endif %}>Electrical System Repairs</option>
+                <option value="Attachment Servicing" {% if request.GET.area_of_expertise == "Attachment Servicing" %}selected{% endif %}>Attachment Servicing</option>
+                <option value="Cooling System Repairs" {% if request.GET.area_of_expertise == "Cooling System Repairs" %}selected{% endif %}>Cooling System Repairs</option>
+                <option value="Brake and Steering System Repairs" {% if request.GET.area_of_expertise == "Brake and Steering System Repairs" %}selected{% endif %}>Brake and Steering System Repairs</option>
+                <option value="Preventative Maintenance Services" {% if request.GET.area_of_expertise == "Preventative Maintenance Services" %}selected{% endif %}>Preventative Maintenance Services</option>
+                <option value="Track and Tread Replacement" {% if request.GET.area_of_expertise == "Track and Tread Replacement" %}selected{% endif %}>Track and Tread Replacement</option>
+                <option value="Cab and Operator Comfort Repairs" {% if request.GET.area_of_expertise == "Cab and Operator Comfort Repairs" %}selected{% endif %}>Cab and Operator Comfort Repairs</option>
+            </select>
+
+            
+            <button type="submit" class="btn btn-primary">Apply</button>
+
+          </div>
+    </form>
+             
+  
+  <div class="container mt-5">
+    <h2 class="text-center mb-4 centroid">Approved Drivers</h2>
+   
+
+  {% if Mmodel %}
+
+    <div class="row">
+      {% for Mmodels in Mmodel %}
+      <div class="col-md-4 mb-4">
+        <!-- Driver Card -->
+        <div class="card driver-card" >
+          <div class="card-body    ">
+            <h5 class="card-title text-center">{{ Mmodels.username }}</h5><br>
+              <p class=" char"><strong>Experience</strong> {{ Mmodels.experience }} Years <Yearsl class="op"></Yearsl></p>
+              <p class=" char"><strong>Specialization</strong> {{ Mmodels.specialization }}</p>
+              <p class=" char"><strong>License Type</strong> {{ Mmodels.license_category }}</p>
+              <p class=" char"><strong>Location </strong> {{ Mmodels.place }}, {{ Mmodels.district }} </p>
+
+              <!-- <p class="text-dark char"><strong>Rating:</strong> {{ Mmodels.rating }}stars</p>  -->
+
+              {% if user.is_authenticated %}
+              <button onclick="location.href='/bok_now?driver_id={{ Mmodels.id }}'" class="btn btn-success mt-2" >Book Now</button>
+              {% else %}
+              <button onclick="location.href='/login'" class="btn btn-success mt-2" >Book Now</button>
+              {% endif %}
+
+              <button class="btn btn-primary mt-2" data-toggle="modal" data-target="#driverModal{{ Mmodels.id }}">View Profile</button>
+
+          </div>  
+        </div>
+      </div>
+
+     
+      <!-- Modal for Driver Details -->
+      <div class="modal fade" id="driverModal{{ Mmodels.id }}" tabindex="-1" role="dialog" aria-labelledby="driverModalLabel{{ Mmodels.id }}" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            
+            <!-- Modal Header -->
+            <div class="modal-header bg-primary text-white">
+              <h5 class="modal-title" id="driverModalLabel{{ Mmodels.id }}">
+                <i class="fas fa-user-cog"></i> {{ Mmodels.username }}'s Profile
+              </h5>
+              <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+      
+            <!-- Modal Body -->
+            <div class="modal-body">
+              <div class="row">
+                
+                <!-- Image Section -->
+                <div class="col-md-4 text-center">
+                  {% if Mmodels.image %}
+                    <img src="{{ Mmodels.image.url }}" alt="Driver Photo" class="img-fluid rounded-circle shadow-sm" style="width: 150px; height: 150px;">
+                  {% else %}
+                    <img src="/static/images/placeholder.png" alt="No Photo Available" class="img-fluid rounded-circle shadow-sm" style="width: 150px; height: 150px;">
+                  {% endif %}
+                </div>
+                
+                <!-- Details Section -->
+                <div class="col-md-8">
+                  <h6><strong>Name:</strong></h6>
+                  <p>{{ Mmodels.username }}</p>
+      
+                  <h6><strong>Experience:</strong></h6>
+                  <p>{{ Mmodels.experience }} in excavator operations</p>
+      
+                  <h6><strong>Specialization:</strong></h6>
+                  <p>{{ Mmodels.specialization }}</p>
+      
+                  <h6><strong>Rate:</strong></h6>
+                  <p>{{ Mmodels.payment_amount }}/{{ Mmodels.payment_mode }}</p>
+                </div>
+      
+              </div>
+            </div>
+      
+            <!-- Modal Footer -->
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-secondary closeup" data-dismiss="modal">Close</button>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p>No drivers found for your search.</p>
+  {% endif %}
+  </div>
+
+  
+</body>
+</html>
+
+{% include 'footer.html' %}

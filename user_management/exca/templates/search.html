@@ -1,0 +1,29 @@
+
+{% include 'header.html' %}
+{% block content %}
+
+<h2>Search Excavators</h2>
+
+<form method="get">
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<h3>Search Results</h3>
+{% if excavators %}
+    <ul>
+        {% for excavator in excavators %}
+            <li>
+                <strong>{{ excavator.model }}</strong> 
+                - Type: {{ excavator.excavator_type }} 
+                - Weight: {{ excavator.weight }} Kg
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No excavators found matching your criteria.</p>
+{% endif %}
+{% endblock %}
+
+
+{% include 'footer.html' %}

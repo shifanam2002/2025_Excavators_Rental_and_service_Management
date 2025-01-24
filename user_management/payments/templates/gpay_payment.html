@@ -1,0 +1,32 @@
+{% include 'header.html' %}
+{% load static %}
+
+<head>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/payment.css' %}">
+    <title>GPay Payment</title>
+</head>
+<body>
+    <h1>GPay Payment</h1>
+
+    <!-- Display Error Message if Exists -->
+    {% if error_message %}
+        <div style="color: red;">{{ error_message }}</div>
+    {% endif %}
+
+    {% if total_amount %}
+    <div class="amount-box">Total Amount: ₹{{ total_amount }}</div>
+    {% endif %}
+
+    <form class="pay_form" method="POST" action="">
+        {% csrf_token %}
+        <input type="hidden" name="cart_item_ids" value="{{ cart_item_ids }}">
+        <input type="hidden" name="total_amount" value="{{ total_amount }}">
+        <label for="upi_id">Enter UPI ID:</label>
+        <input type="text" id="upi_id" name="upi_id" placeholder="Enter UPI ID" required>
+        <button type="submit">Pay Now</button>
+    </form>
+</body>
+
+{% include 'footer.html' %}

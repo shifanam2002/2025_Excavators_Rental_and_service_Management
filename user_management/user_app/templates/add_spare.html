@@ -1,0 +1,71 @@
+{% include 'header.html' %}
+{% load static %}
+
+
+<body class="bodys">    
+<!-- Add New Spare Part -->
+            <div class="frms">
+                <h2>Add New Spare Part</h2>
+                <form method="POST" action="" enctype="multipart/form-data" class="exca_adds">
+                    {% csrf_token %}
+                
+                    <div class="form-groups">
+                        {{ form.part_name.label_tag }}
+                        {{ form.part_name }}
+                    </div>
+                    <div class="form-groups">
+                        {{ form.description.label_tag }}
+                        {{ form.description }}
+                    </div>
+                    <div class="form-groups">
+                        {{ form.supplier.label_tag }}
+                        {{ form.supplier }}
+                    </div>
+                    <div class="form-groups">
+                        {{ form.price.label_tag }}
+                        {{ form.price }}
+                    </div>   
+                    <div class="form-groups">
+                        {{ form.image.label_tag }}
+                        {{ form.image }}
+                    </div>
+
+                    <div class="form-groups">
+                        {{ form.availability.label_tag }}
+                        {{ form.availability }}
+                    </div>
+                    <div class="form-groups">
+                        {{ form.type.label_tag }}
+                        {{ form.type }}
+                    </div>
+                    <div class="form-groups">
+                        {{ form.material.label_tag }}
+                        {{ form.material }}
+                    </div>
+                    <div class="form-groups">
+                        {{ form.modal_name.label_tag }}
+                        {{ form.modal_name }}
+                    </div>
+                    <div class="form-groups">
+                        {{ form.warranty.label_tag }}
+                        {{ form.warranty }}
+                    </div>
+                    <br>
+                    <button class="btn" type="submit">Add Part</button>
+                </form>
+            </div>
+        </div>
+
+        
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/excalator.css' %}">
+<link rel="stylesheet" href="{% static 'css/spares.css' %}">
+
+</body>
+
+
+
+
+
+
+{% include 'footer.html' %}

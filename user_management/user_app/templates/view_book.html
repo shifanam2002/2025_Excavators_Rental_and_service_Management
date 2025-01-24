@@ -1,0 +1,153 @@
+{% include 'header.html' %}
+{% load static %}
+
+<head>
+    <!-- <link rel="stylesheet" href="{% static 'css/table.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<!-- {% if messages  %}
+    <div id="messages">
+        {% for message in messages %}
+            <script>
+                alert("{{ message }}");
+            </script>
+        {% endfor %}
+    </div>
+{% endif %} -->
+<h1>Booking Details</h1><br><br>
+
+<!-- Driver Booking Table -->
+{% if driver_bookings %}
+<h2>Driver Bookings</h2>
+<div class="book_table">
+    <table class="table-bordered">
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Customer</th>
+                <th>Book Type</th>
+                <th>Booked Time</th>
+                <th>From Date</th>
+                <th>To Date</th>
+                <th>Location</th>
+                <th>Type</th>
+                <th>Messages</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in driver_bookings %}
+                <tr>
+                    <td>{{ booking.driver_id }}</td>
+                    <td>{{ booking.user_id }}</td>
+                    <td>{{ booking.booking_type }}</td>
+                    <td>{{ booking.booking_time }}</td>
+                    <td>{{ booking.booking_date }}</td>
+                    <td>{{ booking.to_date }}</td>
+                    <td>{{ booking.location }}</td>
+                    <td>{{ booking.equipment_type }}</td>
+                    <td>{{ booking.message }}</td>
+                    <td>{{ booking.approval_status }}</td>
+                    <td>
+                        {% if booking.approval_status == "Accepted" %}
+                            <form action="{% url 'update_service_status' booking.id %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <select name="status" class="form-select" style="width: auto; display: inline-block;">
+                                    <option value="Driver Arrived">Driver Arrived</option>
+                                    <option value="Service Started">Service Started</option>
+                                    <option value="Completed">Completed</option>
+                                </select>
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </form>
+                        {% else %}
+                            <form action="{% url 'accept_booking' booking.id %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-success">Accept</button>
+                            </form>
+                            <form action="{% url 'reject_booking' booking.id %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Reject</button>
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+    <!-- <p>No driver bookings available.</p> -->
+{% endif %}
+
+<!-- Mechanic Booking Table -->
+{% if mechanic_bookings %}
+<h2>Mechanic Bookings</h2>
+<div class="book_table">
+    <table class="table-bordered">
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>SRL No.</th>
+                <th>Model </th>
+                <th>Operating Hours</th>
+                <th>LS Date</th>
+                <th>Issue</th>
+                <th>priority</th>
+                <th>Location</th>
+                <th>Preferred Date</th>
+                <th>Booked Time</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in mechanic_bookings %}
+                <tr>
+                    <td>{{ booking.user_id }}</td>
+                    <td>{{ booking.serial_number }}</td>
+                    <td>{{ booking.excavator_make_model }}</td>
+                    <td>{{ booking.operating_hours }}</td>
+                    <td>{{ booking.last_service_date }}</td>
+                    <td>{{ booking.issue_description }}</td>
+                    <td>{{ booking.priority_level }}</td>   
+                    <td>{{ booking.service_location }}</td>   
+                    <td>{{ booking.preferred_date }}</td>   
+                    <td>{{ booking.preferred_time_slot }}</td>
+                    <td>{{ booking.approval_status }}</td>
+                    <td>
+                        {% if booking.approval_status == "Accepted" %}
+                            <form action="{% url 'update_mechanic_status' booking.id %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <select name="status" class="form-select" style="width: auto; display: inline-block;">
+                                    <option value="Mechanic Arrived">Mechanic Arrived</option>
+                                    <option value="Repair Started">Repair Started</option>
+                                    <option value="Repair Completed">Repair Completed</option>
+                                </select>
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </form>
+                        {% elif booking.approval_status == "Rejected" %}
+                            <button class="btn btn-danger" disabled>Rejected</button>
+                        {% else %}
+                            <form action="{% url 'accept_booking' booking.id %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-success">Accept</button>
+                            </form>
+                            <form action="{% url 'reject_booking' booking.id %}" method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Reject</button>
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+    <!-- <p>No mechanic bookings available.</p> -->
+{% endif %}
+
+
+{% include 'footer.html' %}

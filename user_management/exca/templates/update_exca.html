@@ -1,0 +1,17 @@
+{% include 'header.html' %}
+{% load static %}
+<head>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/spares.css' %}">
+</head>
+<h2>Update excavator</h2>
+<div class="container">
+<form class="form-group" method="post" novalidate>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-success">Save</button>
+  <a class="cancel" href="{% url 'view_cate' %}" class="btn btn-secondary">Back to Add excavator</a>
+</form>
+</div>
+
+{% include 'footer.html' %}

@@ -1,0 +1,47 @@
+{% include 'header.html' %}
+{% load static %}
+
+<head>
+
+    <title>Spare Parts Inventory</title>
+    <link rel="stylesheet" href="{% static 'css/spare.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+    <div class="container2">
+        <h2 class="text-center">Category Inventory</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Category name</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for categorie in categories %}
+                <tr>
+                    <td>{{ categorie.name }}</td>
+                    <td>{{ categorie.description }}</td>
+                    <td>
+                        {% if categorie.image %}
+                        <img src="{{ categorie.image.url }}" alt="{{ categorie.name }}" style="width: 100px; height: auto;">
+                        {% else %}
+                        No image available
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'update_cate' categorie.id %}" class="btn">Update</a>
+                        <a href="{% url 'cate_delete' categorie.id %}" class="btn">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+
+        
+    </body>
+    {% include 'footer.html' %}

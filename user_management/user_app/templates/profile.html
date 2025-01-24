@@ -1,0 +1,77 @@
+{% include 'header.html' %}
+{% load static %}                   
+
+<!-- viewprofile -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User Profile</title>
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/table.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM4F9LBb2I5Tq3mOa5Vw5I4AwE6QEzPe/Yyqzo6" crossorigin="anonymous">
+  
+    </head>
+    <body>
+
+        <div class="prof_container">
+            <h1>Your Dashboard</h1>
+            <div class="profile-info">
+                <div class="image">
+                    <div class="trick">
+                        {% if user.image %}
+                            <img src="{{ user.image.url }}" alt="Profile Image">
+                        {% else %}
+                            <img src="{% static 'images/default_profile.jpg' %}" alt="Default Profile Image">
+                        {% endif %}
+                    </div>
+                </div>
+                <br><br>
+                <p class="user">Hi, {{ user.username }}</p>
+            </div>
+            
+            <div class="profile-options" id="prop">
+                <p><strong>Email Address:</strong> {{ user.email }}</p>
+                <p><strong>Phone:</strong> {{ user.phone }}</p>
+                <p><strong>Place:</strong> {{ user.place }}</p>
+            </div>
+        
+            <div class="profile-options">
+                <!-- <a href="#prop"><i class="fas fa-user-alt"></i>My Profile</a> -->
+                {% if request.session.ut == 0 %}
+                    <a href="/edit_profile"><i class="fas fa-user-edit"></i> Update Profile</a>
+                    <a href="/password_change_form"><i class="fas fa-key"></i> Reset Password</a>
+                    <a href="/req_driver"><i class="fas fa-calendar-check"></i> View Driver Requests</a>
+                    <a href="/vw_userbook" target="_top"><i class="fas fa-calendar-check"></i> View confirmed Drivers</a>
+                    <a href="/req_mech"><i class="fas fa-calendar-check"></i> View Mechanic Requests</a>
+                    <a href="/vw_mechanic" target="_top"><i class="fas fa-calendar-check"></i> View confirmed Mechanic</a>
+                    <a href="/vw_rentals"><i class="fas fa-file-invoice-dollar"></i> View Rentals</a>
+                    <a href="{% url 'payment_history' %}"><i class="fas fa-file-invoice-dollar"></i> View Orders</a>
+                {% elif request.session.ut == 2 %}
+                    <a href="/edit_profile"><i class="fas fa-user-edit"></i> Update Profile</a>
+                    <a href="/password_change_form"><i class="fas fa-key"></i> Reset Password</a>
+                    <a href="/vw_rentals"><i class="fas fa-calendar-check"></i> View Rentals</a>
+                    <a href="/req_mech"><i class="fas fa-calendar-check"></i> View Mechanic Requests</a>
+                    <a href="/vw_mechanic" target="_top"><i class="fas fa-calendar-check"></i> View confirmed Mechanic</a>
+                    <a href="{% url 'payment_history' %}"><i class="fas fa-file-invoice-dollar"></i> View Orders</a>
+                {% elif request.session.ut == 3 %}
+                    <a href="/edit_profile"><i class="fas fa-user-edit"></i> Update Profile</a>
+                    <a href="/password_change_form"><i class="fas fa-key"></i> Reset Password</a>
+                    <a href="/vw_rentals"><i class="fas fa-calendar-check"></i> View Rentals</a>
+                    <a href="/req_driver"><i class="fas fa-calendar-check"></i> View Driver Requests</a>
+                    <a href="/vw_userbook" target="_top"><i class="fas fa-calendar-check"></i> View confirmed Drivers</a>
+                    <a href="{% url 'payment_history' %}"><i class="fas fa-file-invoice-dollar"></i> View Orders</a>
+                {% endif %}
+
+                
+            </div>
+        </div>
+    </body>
+</html>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+
+{% include 'footer.html' %}

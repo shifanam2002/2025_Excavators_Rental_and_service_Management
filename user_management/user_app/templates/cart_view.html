@@ -1,0 +1,65 @@
+{% include 'header.html' %}
+{% load static %}
+
+<body>
+    
+<h2>Shopping Cart</h2>
+<div class="back-button-container">
+    <button class="btn back-btn" onclick="goBack()">🔙 Back</button>
+</div>
+<table class="table">
+    {% for item in cart_items %}
+    <tr>
+        <td>
+            {% if item.spare.image %}
+            <img src="{{ item.spare.image.url }}" alt="{{ item.spare.part_name }}" class="cart-item-image">
+            {% else %}
+            <img src="{% static 'placeholder-image.png' %}" alt="No Image" class="cart-item-image">
+            {% endif %}
+        </td>
+        <td>
+            <p class="part-name">{{ item.spare.part_name }}</p>
+            <p class="in-stock"> {{item.spare.availability}} </p>
+            <p class="seller">Supplier: {{ item.spare.supplier }}</p>
+        </td>
+        <td>
+            <p class="price"> M.R.P:₹ {{ item.spare.price }}</p>
+            <!-- <p class="mrp">M.R.P: ₹ {{ item.spare.mrp }}</p> -->
+        </td>
+        <td>
+            <div class="quantity-controls">
+                <button class="btn decrement" onclick="updateQuantity('{{ item.id }}', -1)">-</button>
+                <input type="number" value="{{ item.quantity }}" readonly>
+                <button class="btn increment" onclick="updateQuantity('{{ item.id }}', 1)">+</button>
+            </div>
+        </td>
+        <td>
+            <form method="POST" action="{% url 'remove_from_cart' remove_id=item.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn remove-btn">Remove</button>
+            </form>
+            <!-- <button class="btn buy-now-btn" onclick="buyNow('{{ item.id }}')">Buy Now</button> -->
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<div class="cart-summary">
+    <h3>Subtotal ({{ cart_items|length }} items): ₹ {{ total_price }}</h3>
+    <button class="btn buy-now-btn" onclick="buyNow('{{ item.id }}')">Buy Now</button>
+
+</div>
+
+
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/order.css' %}">
+
+</body>
+
+<script>
+    function buyNow() {
+        // Redirect to the buy_all page
+        window.location.href = "{% url 'buy_all' %}";
+    }
+</script>
+{% include 'footer.html' %}

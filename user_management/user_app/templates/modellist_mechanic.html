@@ -1,0 +1,79 @@
+{% load static %}
+{% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyModel List</title>
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
+     <link rel="stylesheet" href="{% static 'css/driver.css' %}">
+     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container07">
+        <h1>MyModel List</h1>
+        <!-- <a href="{% url 'model_create' %}" class="btn btn-primary mb-3">Create New Model</a> -->
+        <table class="table table-striped">
+            <thead> 
+                <tr>
+                    <th>Profile pic</th>
+                    <th>Mechanic Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Area of expertise</th>
+                    <th>Services</th>
+                    <th>Experience</th>
+                    <th>Location</th>
+                    <th>Certificates</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for Mymodels in Mymodelp %}
+                <tr>
+                    <td>
+                        {% if Mymodels.image %}
+                            <a href="{{ Mymodels.image.url }}" target="_blank">
+                                <img src="{{ Mymodels.image.url }}" alt="mechanic Image" style="width: 100px; height: auto;">
+                        {% else %}
+                            No Image
+                        {% endif %}   </a>
+                    </td>
+                    <td>{{ Mymodels.username }}</td>
+                    <td>{{ Mymodels.email }}</td>
+                    <td>{{ Mymodels.phone }}</td>
+                    <td>{{ Mymodels.area_of_expertise }}</td>
+                    <td>{{ Mymodels.services }}</td>
+                    <td>{{ Mymodels.experience }}  </td>
+
+                    <td>{{ Mymodels.place }}, {{ Mymodels.district }} </td>
+                    <td>
+                        {% if Mymodels.certificates %}
+                            <a href="{{ Mymodels.certificates.url }}" target="_blank">View Certificate</a>
+                        {% else %}
+                            No Certificate
+                        {% endif %}
+                    </td>
+                    <td>{{ Mymodels.approval_status }}</td>
+                    <td>
+                        <!-- Approve button -->
+                        <form action="{% url 'approve_driver' Mymodels.id %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-success">Approve</button>
+                        </form>
+                        <!-- Reject button -->
+                        <form action="{% url 'reject_mechanic' Mymodels.id %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Reject</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+{% include 'footer.html' %}

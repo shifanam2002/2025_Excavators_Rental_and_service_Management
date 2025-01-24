@@ -1,0 +1,53 @@
+{% include 'header.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Requests</title>
+    <link rel="stylesheet" href="{% static 'css/spares.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+    <div class="container">
+        <h1>User Requests</h1>
+        {% if requests %}
+        <table>
+            <thead>
+                <tr>
+                    <!-- <th>Product_id</th> -->
+                    <th>prod name</th>
+                    <th>Phone</th>
+                    <th>Excavator Type</th>
+                    <th>Quantity</th>
+                    <th>Requirement</th>
+                    <!-- <th>Submitted At</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in requests %}
+                <tr>
+                    <td>{{ request.spares.part_name }}</td>
+                    <!-- <td>{{ request.part_name }}</td> -->
+                    <td>{{ request.phone }}</td>
+                    <td>{{ request.excavator_type }}</td>
+                    <td>{{ request.quantity }}</td>
+                    <td>{{ request.requirement }}</td>
+                    <!-- <td>{{ request.created_at }}</td> -->
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" style="text-align:center;">No requests found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+</body>
+</html>
+
+{% include 'footer.html' %}
+

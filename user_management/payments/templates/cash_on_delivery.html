@@ -1,0 +1,50 @@
+{% load static %}
+{% include 'header.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/payment.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Cash on Delivery</title>
+</head>
+<body>
+    <div class="contain">
+        <h1>Cash on Delivery</h1>
+        
+            <div class="detail">
+                <label>Delivery Address:</label>
+                <p>{{ delivery_address }}</p>
+            </div>
+        
+            <div class="detail">
+                <label>Expected Delivery Date:</label>
+                <p>{{ expected_date }}</p>
+            </div>
+        
+            <form method="POST" action="{% url 'cash_on_delivery' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-confirm">Confirm Order</button>
+            </form>
+        </div>
+        
+        {% if messages %}
+            {% for message in messages %}
+                {% if 'suc' in message.tags %}
+                    <script> alert("{{ message }}"); </script>
+                {% elif 'fail' in message.tags %}
+                    <script> alert("{{ message }}"); </script>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+
+        
+    </div>
+</body>
+</html>
+
+
+{% include 'footer.html' %}

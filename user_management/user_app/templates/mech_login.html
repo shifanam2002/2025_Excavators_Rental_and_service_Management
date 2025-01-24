@@ -1,0 +1,37 @@
+{% include 'header.html' %}
+{% load static %}
+
+
+<head>
+
+    <title>Service and Spare Parts</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mech.css' %}">
+
+</head>
+<body>
+    <div class="container-2">
+        <!-- Service Registration Card -->
+        <div class="card">
+            <img src="../static/Images/Service720x536.jpg" alt="Service Registration">
+            <div class="card-content">
+                <h3 class="card-title">Service Registration</h3>
+                <p class="card-description">Register for our exclusive services to keep your machinery in top condition.</p>
+                <button><a href="/add_service"></a>Add Services</button>
+            </div>
+        </div>
+
+        <!-- Adding Spare Parts Card -->
+        <div class="card">
+            <img src="../static/Images/spare parts.jpg" alt="Add Spare Parts">
+            <div class="card-content">
+                <h3 class="card-title">Add Spare Parts</h3>
+                <p class="card-description">Add or update spare parts inventory to ensure seamless operations.</p>
+                <button>Add Parts</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+{% include 'footer.html' %}

@@ -1,0 +1,82 @@
+{% load static %}
+{% include 'header.html' %}
+
+<head>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/payment.css' %}"> -->
+    <title>GPay Payment</title>
+</head>
+<!-- <h2 style="text-align: center;margin-bottom: 50px;margin-top: 20px;">Your Payment History</h2> -->
+<h1 class="your">Your Payment History</h2>
+<!-- {% if payments %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Payment No.</th>
+            <th>Spare Part</th>
+            <th>Spare img</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for payment in payments %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ payment.cart.spare.part_name }}</td>
+                <td>
+                    <img src="{{ payment.cart.spare.image.url }}" alt="{{ payment.cart.spare.part_name }}" width="100">
+                </td>
+                <td>{{ payment.cart.quantity }}</td>
+                <td>RS{{ payment.amount }}</td>
+                <td>{{ payment.created_at|date:"d M Y" }}</td>
+                <td>Approved</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+    <p>You have no payment history yet.</p>
+{% endif %} -->
+
+
+{% if payments %}
+
+<div class="payment-container" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+    {% for payment in payments %}
+        <div class="payment-card" style="width: 500px; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px;">
+            <div class="spare-image" style="text-align: center; margin-bottom: 15px;">
+                <img src="{{ payment.cart.spare.image.url }}" alt="{{ payment.cart.spare.part_name }}" style="max-width: 100%; height: auto; border-radius: 8px;">
+            </div>
+            <div class="spare-details" style="font-family: Arial, sans-serif; color: #333;">
+                <h3 style="margin: 0 0 10px; font-size: 18px; color: #007bff;">{{ payment.cart.spare.part_name }}</h3>
+                <p style="margin: 5px 0;"><strong>Quantity:</strong> {{ payment.cart.quantity }}</p>
+                <p style="margin: 5px 0;">
+                    <strong>Amount:</strong> 
+                    <span style="color: #dc3545; font-weight: bold; font-size: 20px;">RS {{ payment.amount }}</span>
+                </p>
+                <p style="margin: 5px 0;">
+                    <strong>Date:</strong>
+                    <span style="color: #6c757d; font-style: italic;">{{ payment.expected_date|date:"d M Y" }}</span>
+                </p>
+                <p style="margin: 5px 0;">
+                    <strong>Status:</strong> 
+                    <span style="color: #28a745; font-weight: bold; background-color: #d4edda; padding: 5px 10px; border-radius: 5px;">Approved</span>
+                </p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="no-requests">
+    <span>Sorry!</span>
+    <p>You have not done any orders at the moment.</p>
+    <img src="https://cdn-icons-png.flaticon.com/512/2748/2748558.png" alt="No Requests">
+</div>
+{% endif %}
+
+{% include 'footer.html' %}

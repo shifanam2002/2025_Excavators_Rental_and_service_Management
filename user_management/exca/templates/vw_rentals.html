@@ -1,0 +1,67 @@
+{% include 'header.html' %}
+{% load static %}
+
+<head>
+
+    <title>Confirmed Rentals</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+</head>
+    <h1 class="your">Your Confirmed Rentals</h1>
+    <div class="booking-container">
+        {% if rentals %}
+            <table class="table table-">
+                <thead>
+                    <tr>
+                        <th>Machine</th>
+                        <th>Model</th>
+                        <th>Type</th>
+                        <th>Rental Days</th>
+                        <th>Starting Date</th>
+                        <th>Ending Date</th>
+                        <th>Payment</th>
+                        <th>Operator Required</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rental in rentals %}
+                        <tr>
+                            <td>{{ rental.excavator.excavator_name }}</td>
+                            <td>{{ rental.excavator_model }}</td>
+                            <td>{{ rental.excavator_type }}</td>
+                            <td>{{ rental.rental_days }}</td>
+                            <td>{{ rental.start_date }}</td>
+                            <td>{{ rental.end_date }}</td>
+                            <td>{{ rental.excavator.price }}/{{ rental.excavator.payment_mode }}</td>
+                            <td>{{ rental.operator_required|yesno:"Yes,No" }}</td>
+                            <!-- <td>${{ rental.total_cost }}</td> -->
+                            <td>
+                                {% if rental.is_enquired %}
+                                    <span class="status">Approved</span>
+                                {% else %}
+                                    <span class="status">Pending</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="no-requests">
+                <span>Sorry!</span>
+                <p>You have not done any rental requests at the moment.</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/2748/2748558.png" alt="No Requests">
+            </div>
+        {% endif %}
+    </div>
+    
+
+
+</body>
+</html>
+
+{% include 'footer.html' %}
+
+

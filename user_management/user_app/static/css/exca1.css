@@ -1,0 +1,288 @@
+.form-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+}
+body{
+  font-family:Georgia, 'Times New Roman', Times, serif
+
+}
+
+.navbar-light .navbar-nav .nav-link{
+  color: antiquewhite;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #333;
+    
+}
+.form-label{
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #024441;
+  font-size:15px;
+}
+
+.form-label input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+
+}
+input[type="date"]{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.mb-3 {
+    margin-bottom: 20px;
+}
+
+input[type="text"], 
+input[type='email'],
+input[type='number'],
+select, 
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    /* font-family: 'Poppins', sans-serif; */
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+textarea {
+    resize: none;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+h5 {
+    text-align: center;
+    color: #555;
+    margin-bottom: 20px;
+}
+/* h4, p{
+    font-family: 'Times New Roman', Times, serif;
+} */
+.card-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 300px;
+  height: 100%;
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+  backface-visibility: hidden;
+}
+
+.card-front {
+  z-index: 2;
+  background: #f9f9f9;
+}
+
+.card-back {
+  transform: translateX(100%);
+  background: #e0f7fa;
+}
+
+.card-wrapper:target .card-front {
+  transform: translateX(-100%);
+}
+
+.card-wrapper:target .card-back {
+  transform: translateX(0);
+}
+.bubb{
+    margin-top: 6px; 
+    /* width:300px; */
+    background-color: chocolate;
+    
+}
+.bubb:hover{
+    background-color: rgb(241, 157, 96);
+    
+}
+
+.nav-item.dropdown a.nav-link.dropdown-toggle {
+  text-decoration: none !important;
+  border-bottom: 1px solid transparent !important;
+  padding-bottom: 0 !important;}
+
+
+  .modal-title{
+    margin-left: 180px;
+  }
+  .btn {
+    font-size: 15 px;
+    font-weight: bold;
+    color: #eff1ef; /* Example color */
+    text-align: center;
+    padding-bottom: 5px;
+    height: 40px;
+    background-color: rgb(20, 140, 156);
+    border:none;
+  }
+  .btn:hover{
+    background-color: rgb(16, 104, 116);
+  
+  }
+  
+  
+  .card shadow{
+    width: 5%;
+    height: 30px;
+  }
+  
+  .close{
+    width: auto;
+    height: fit-content;
+    color: red;
+  }
+  .close:hover{
+    background-color: white;
+  }
+  .modal-header{
+    color: indianred;
+  }
+  
+
+  .card {
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 550px;
+  }
+   img{
+    /* width: auto; */
+    height: 200px;
+   }
+   .prices{
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(27, 29, 27);
+   }
+
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Card Header */
+  .card-header {
+    position: relative;
+  }
+  
+  .card-header .badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: orange;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+  
+  .card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  
+  /* Card Body */
+  .card-body {
+    padding: 15px;
+    height: 220px;
+  }
+ 
+  
+  .card-title {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #2231ff;
+  }
+  
+  .prices {
+    font-size: 16px;
+    font-weight: bold;
+    color: #b1310a;
+  }
+  
+  .supplier,
+  .location,
+  .rating {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #555;
+  }
+  .namee{
+    font-size: 1.1rem;
+  }
+  
+  /* Card Footer */
+  .card-footer {
+    /* padding: 10px 15px; */
+    background-color: #ffffff;
+    text-align: center;
+    /* height: 25px; */
+    border: none;
+  
+
+  }
+  
+  .contact-btn {
+    background-color: teal;
+    color: white;
+    /* padding: 10px 10px; */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    height: 40px;
+  }
+  

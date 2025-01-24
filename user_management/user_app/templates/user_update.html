@@ -1,0 +1,11 @@
+{% include 'header.html' %}
+
+
+<div class="action-buttons">
+    <form method="POST" action="{% url 'update_service_status' booking.id %}">
+        {% csrf_token %}
+        <button type="submit" name="status" value="Driver Arrived" class="btn btn-primary">Driver Arrived</button>
+        <button type="submit" name="status" value="Service Started" class="btn btn-warning">Start Service</button>
+        <button type="submit" name="status" value="Completed" class="btn btn-success">Complete Service</button>
+    </form>
+</div>

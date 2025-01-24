@@ -1,0 +1,36 @@
+.card {
+    width: 500px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    background: #fff;
+  }
+  
+  .card-wrapper {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 200%; 
+    height: 100%;
+  }
+  
+  .card-front, .card-back {
+    width: 100%;
+    padding: 20px;
+    /* flex-shrink: 0; */
+    box-sizing: border-box;
+  }
+  
+  .card-front {
+    background-color: #e3f2fd;
+  }
+  
+  .card-back {
+    background-color: #bbdefb;
+  }
+  
+  .saf{
+    background-color: white;
+  }
+  

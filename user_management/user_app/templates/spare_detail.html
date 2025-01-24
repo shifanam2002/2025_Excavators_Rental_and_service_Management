@@ -1,0 +1,97 @@
+{% include 'header.html' %}
+{% load static %}
+<body>
+    
+<div class="container mt-4">
+    <div class="row">
+      <!-- Spare Part Image -->
+      <div class="col-md-6">
+        <img src="{{ spare.image.url }}" alt="{{ spare.part_name }}" class="img-fluid">
+      </div>
+  
+      <!-- Spare Part Details -->
+      <div class="col-md-6">
+        <h2>{{ spare.part_name }}</h2>
+        <p><strong>Price:</strong> ₹ {{ spare.price }}</p>
+        <p><strong>Supplier:</strong> {{ spare.supplier }}</p>
+        <p><strong>Material:</strong> {{ spare.material }}</p>
+        <p><strong>Category type:</strong> {{ spare.type }}</p>
+        <p><strong>Warranty:</strong> {{ spare.warranty }} months</p>
+        <p><strong>Description:</strong> {{ spare.description }}</p>
+        <p><strong>Quantity Available:</strong> {{ spare.quantity }}</p>
+        <p>
+          <strong>Availability:</strong>
+          {% if spare.availability == 'In Stock' %}
+            <span class="text-success">In Stock</span>
+          {% else %}
+            <span class="text-danger">Out of Stock</span>
+          {% endif %}
+        </p>
+  
+        <!-- Quantity Selector -->
+        <!-- <div class="form-group">
+          <label for="quantity">Quantity:</label>
+          <input type="number" id="quantity" name="quantity" min="1" value="1" class="form-control w-50">
+        </div> -->
+        <form method="POST" action="{% url 'cart_view' %}">
+          {% csrf_token %}
+          <input type="hidden" name="spare_id" value="{{ spare.id }}">
+          <button type="submit" class="btn cart-button">Add to Cart</button>
+      </form>
+      <!-- <form method="POST" action="{% url 'buy_now' %}">
+          {% csrf_token %}
+          <input type="hidden" name="spare_id" value="{{ spare.id }}">
+          <button type="submit" class="btn">Buy Now</button>
+      </form> -->
+        <!-- Add to Cart Button -->
+        <!-- <button class="btn btn-primary" onclick="addToCart('{{ spare.id }}')">Add to Cart</button> -->
+      </div>
+    </div>
+
+
+    <!-- <div class="spare-detail">
+      <img src="{{ spare.image.url }}" alt="{{ spare.part_name }}">
+      <h1>{{ spare.part_name }}</h1>
+      <p><strong>Supplier:</strong> {{ spare.supplier }}</p>
+      <p><strong>Price:</strong> ₹{{ spare.price }}</p>
+      <p><strong>Description:</strong> {{ spare.description }}</p>
+      <form method="POST" action="{% url 'cart_view' %}">
+          {% csrf_token %}
+          <input type="hidden" name="spare_id" value="{{ spare.id }}">
+          <button type="submit" class="btn">Add to Cart</button>
+      </form>
+      <form method="POST" action="{% url 'buy_now' %}">
+          {% csrf_token %}
+          <input type="hidden" name="spare_id" value="{{ spare.id }}">
+          <button type="submit" class="btn">Buy Now</button>
+      </form>
+  </div>
+   -->
+
+  
+    <!-- Related Items -->  
+    <div class="mt-4">
+      <!-- <h4>Related Spare Parts</h4> -->
+      <div class="row">
+        {% for related in related_parts %}
+          <div class="col-md-3">
+            <div class="card">
+              <img src="{{ related.image.url }}" alt="{{ related.part_name }}" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">{{ related.part_name }}</h5>
+                <p class="card-text">₹ {{ related.price }}</p>
+                <a href="/spare/{{ related.id }}" class="btn btn-sm btn-primary">View Details</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!-- <link rel="stylesheet" href="{% static 'css/spares.css' %}"> -->
+</body>
+  
+
+{% include 'footer.html' %}

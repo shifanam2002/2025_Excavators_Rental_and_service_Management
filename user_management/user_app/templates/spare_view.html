@@ -1,0 +1,93 @@
+{% include 'header.html'%}
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spare Parts Inventory</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/spares.css' %}">
+
+</head>
+<body>
+  <div>
+      <h2> Find your Spare Parts </h2>
+      <a href="{% url 'cart_view' %}" class="btn view-cart">🛒 View Cart</a>
+
+      <div class="containers">
+
+          {% for spare in spares %}
+          <div class="cards">
+              {% if spare.image %}
+              <img src="{{ spare.image.url }}" alt="{{ spare.part_name }}">
+              {% else %}
+              <img src="{% static 'placeholder-image.png' %}" alt="No Image Available">
+              {% endif %}  
+              <a href="{% url 'spare_detail' spare.id %}">
+                <h3 style="cursor: pointer;">{{ spare.part_name }}</h3>
+            </a>          
+              <!-- <h3 data-toggle="model" data-target="#spareModal{{ spare.id }}" style="cursor: pointer;"> {{ spare.part_name }}</h3> </a> -->
+              <div></div>
+              <p>{{ spare.supplier }}</p>
+              <p class="price">₹ {{ spare.price }}</p> 
+
+              <div class="button-container">
+                {% if user.is_authenticated %}                
+                    <form method="POST" action="{% url 'cart_view' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="spare_id" value="{{ spare.id }}">
+                        <button type="submit" class="add-to-cart">Add to Cart</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}"><button>Log-in to buy</button></a>
+                {% endif %}
+                <!-- <form method="POST" action="{% url 'checkout' spare_id=spare.id %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="spare_id" value="{{ spare.id }}">
+                    <input type="hidden" name="price" value="{{ spare.price }}">
+                    <input type="hidden" name="part_name" value="{{ spare.part_name }}">
+                    <button type="submit" class="buy-now">Buy Now</button> -->
+                </form>
+                
+            </div> 
+                <!-- {% if user.is_authenticated %}    
+                    <button onclick="openContactForm('{{ spare.id }}')" class="contact">Contact Us</button>
+                {% else %}
+                    <button onclick="location.href='/login'" class="contact">Contact
+                        Us</button>
+                {% endif %} -->
+          </div>
+          {% endfor %}
+      </div>
+  </div>
+
+
+
+
+
+    <div id="contactForm" class="popup-form" style="display: none;">
+        <div class="form-container">
+            <span class="close-btn" onclick="closeContactForm()">×</span>
+            <h3>Contact Us</h3>
+            <form method="POST" action="{% url 'spare_view' %}">
+                {% csrf_token %}
+                <input type="hidden" name="spare_id" id="spareIdInput">
+                {{ form.as_p }}
+                <button class="submit-btn">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+<script src="{% static 'js/book.js' %}"></script>
+
+</body>
+</html>
+
+
+
+
+
+{% include 'footer.html'%}

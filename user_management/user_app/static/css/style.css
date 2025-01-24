@@ -1,0 +1,1133 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+ /* Imports the "Poppins" font from Google Fonts */
+
+
+ .nav-item{
+    color: rgb(255, 255, 255);
+ }
+
+.navbar-brand a{
+    font-size: 30px;
+
+}
+.navbar{
+    background: linear-gradient(45deg, #28425d, #6c7d99);
+    background-size: cover;
+    background-blend-mode: overlay;
+   
+}
+
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .navbar-header img {
+      max-height: 50px;
+      margin-top: 5px;
+    }
+  }
+
+
+
+ *{
+    padding: 0;
+    margin: 0 ;
+    /* box-sizing: border-box; */
+    /* font-family: "Poppins", sans-serif; */
+     /* Resets padding and margin for all elements and sets the box-sizing to border-box. Also sets the font-family to "Poppins".  */
+}
+
+header{
+    background: transparent;
+    padding: 0;
+    margin: 0;
+
+     /* Sets the header's background to transparent and adds padding  */
+}
+
+
+
+body::before{
+    content: "";
+    background: rgba(0,0,0,0,5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%s;
+    z-index: -1;
+     /* Adds an overlay effect to the body with a semi-transparent background  */
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-size: 120%;
+    position: relative;
+    width: 100%;
+    font-family:Georgia, 'Times New Roman', Times, serif
+}
+
+
+/* .container{
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0.2rem; */
+    /* Styles the container to center it and control its width and padding  */
+/* } */
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Styles the navigation to use flexbox layout  */
+}
+
+/* .logo{
+    display: flex;
+    align-items: center; */
+    /* Styles the logo container to align items horizontally  */
+/* } */
+
+/* .logo h2{
+    margin-left: 0.6rem;
+    color: #101010;
+    text-transform: uppercase;
+    font-size: 2rem;
+    color: rgb(12, 12, 12);
+    text-shadow: 2px 2px 4px #f1f0f0; */
+    /* Styles the logo heading  */
+/* } */
+
+/* .logo h2 span{
+    font-size: 1.3rem;
+    color: rgb(10, 9, 9);
+    text-shadow: 2px 2px 4px #f3f0f0; */
+    /* Styles the span inside the logo heading  */
+/* } */
+
+nav ul{
+    display: flex;
+    list-style: none;
+    /* Styles the navigation list to be displayed as flexbox and removes bullets */
+}
+
+ul li{
+    margin: 0.2rem;
+     /* Adds margin to list items  */
+}
+
+/* .btn{
+    font-size: 1.3rem;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+    Styles the button but hides it by default 
+} */
+
+@media(max-width: 845px){
+    .container{
+        padding: 0.1rem;
+    }
+    /* Adjusts padding for the container on screens narrower than 845px  */
+}
+
+@media(max-width: 768px){
+    .btn{
+        display:block;
+    }
+     /* Displays the button on screens narrower than 768px  */
+}
+
+form .cart-button{
+    background-color: #b0ceee;
+}
+.col-md-10{
+    margin-right:300px;
+     /* Adds margin to the right of elements with class "col-md-10" */
+}
+
+.nav-link {
+    position: relative;
+    padding: 0.9rem 0.9rem;
+    font-size: 20px;
+    font-weight: 100;
+    /* color: rgb(253, 246, 246); */
+    text-decoration: none;
+    padding-bottom: 5px;
+    /* Styles the navigation links  */
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(252, 251, 251);
+    transition: width 0.3s ease;
+     /* Adds an underline effect to the navigation links  */
+}
+
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: rgb(236, 189, 189);
+    padding-bottom: 5px;
+    position: relative;
+     /* Styles the navigation links  */
+}
+
+.nav-link i, .nav-link img {
+    margin-right: 8px;
+     /* Adds margin to the right of icons and images inside navigation links  */
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: antiquewhite;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(254, 251, 251);
+    transition: width 0.3s ease;
+     /* Adds an underline effect to the navigation links  */
+}
+
+.nav-link:hover::after {
+    width: 100%;
+     /* Expands the underline on hover */
+}
+
+.nav-a{
+    padding: 0.9rem 0.9rem;
+    position: relative;
+    padding: 0.9rem 0.9rem;
+    color: rgb(7, 7, 7);
+    text-decoration: none;
+    /* Styles the nav-a links  */
+}
+
+
+
+  
+  
+  
+  
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .navbar-header img {
+      max-height: 50px;
+      margin-top: 5px;
+    }
+  }
+
+
+
+/* login section */
+.login-container {
+    width: 100%; 
+    max-width: 400px; 
+    margin: 0 auto; 
+    margin-top: 100px;
+    padding: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    background-color: white;
+    background-color: rgba(255, 255, 255, 0.5); 
+    -webkit-backdrop-filter: blur(10px);
+}
+.login-form label{
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    font-size: 2ex;
+    margin-bottom: .2rem;
+    color: #040438;
+    font-weight: bold;
+}
+
+.login-form{
+    display: flex; 
+    flex-direction: column; 
+}
+
+.login-form input[type= 'text'],
+.login-form input[type= 'password'],
+.login-form select,
+.login-form textarea{
+    padding: 7px;
+    margin: 2px 0;
+    width: 100%;  /* Ensures all input fields take full width of the form */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.login-form input:hover{
+    border-color: #646ded; /* Same color as your gradient */
+    box-shadow: 0 0 5px rgba(100, 109, 237, 0.4);
+}
+
+
+
+
+.login-form h2 {
+    margin-bottom: 20px; 
+    text-align: center; 
+}
+.form-group {
+    margin-bottom: 15px; 
+}
+.form-group label {
+    margin-bottom: 5px; 
+    font-weight: bold; 
+}
+.form-group input {
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    width: calc(100% - 22px); 
+}
+button {
+    padding: 10px; 
+    background-color: #007BFF; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+button:hover {
+    background-color: #0056b3; 
+}
+
+
+/* Register section*/
+
+.register-container {
+    /* width: 100%;  */
+    max-width: 500px; 
+    margin: 0 auto; 
+    /* margin-top: 100px; */
+    padding: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    box-shadow: 0 0 10px rgba(1, 1, 1, 0.1); 
+    background-color: white;
+    background-color: rgba(255, 255, 255, 0.5); 
+    -webkit-backdrop-filter: blur(10px);
+
+}
+.register-containers {
+    /* width: 100%;  */
+    max-width: 500px; 
+    margin: 0 auto; 
+    /* margin-top: 100px; */
+    padding: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    box-shadow: 0 0 10px rgba(1, 1, 1, 0.1); 
+    background-color: white;
+    background-color: rgba(255, 255, 255, 0.5); 
+    -webkit-backdrop-filter: blur(10px);
+
+
+}
+
+.register-containers h2{
+    font-size: 1.9em;
+    /* margin-bottom: 20px; */
+    color: #ffffff;
+    background: linear-gradient(90deg, #34193f, #6d2040);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.back{
+    background-color: #007bff;
+    height: 100%;
+}
+
+.register-container h2{
+    font-size: 1.9em;
+    /* margin-bottom: 20px; */
+    color: #ffffff;
+    background: linear-gradient(90deg, #34193f, #6d2040);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.bubbb{
+    width: 100%;
+    background: linear-gradient(90deg, #8e44ad, #ff7eb3);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.Reg-form{
+    display: flex; 
+    flex-direction: column; 
+}
+.Reg-form h2 {
+    /* margin-bottom: 20px;  */
+    text-align: center; 
+}
+
+.Reg-form label{
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    /* font-size: 2ex; */
+    margin-bottom: .2rem;
+    color: #040438;
+    font-weight: bold;
+
+}
+.Reg-form input[type="text"],
+.Reg-form input[type="email"],
+.Reg-form input[type="password"],
+.Reg-form input[type="file"],
+.Reg-form input[type="tel"],
+.Reg-form input[type="number"],
+.Reg-form select,
+.Reg-form textarea {
+    padding: 7px;
+    margin: 2px 0;
+    width: 100%;  /* Ensures all input fields take full width of the form */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Styling for hover effect on input fields */
+.Reg-form input:hover {
+    border-color: #646ded; /* Same color as your gradient */
+    box-shadow: 0 0 5px rgba(100, 109, 237, 0.4);
+}
+label *{
+    background-color: red;
+}
+
+label::after {
+    content: '*';
+    color: red;
+    margin-left: 5px; /* Adds some space between the label text and the asterisk */
+}
+
+/* .Reg-group {
+    margin-bottom: 15px; 
+} */
+.Reg-group label {
+    margin-bottom: 5px; 
+    font-weight: bold;
+    display: contents;
+ 
+}
+.Reg-group input {
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    /* width: calc(100% - 22px);  */
+    width: 300px;
+}
+button {
+    padding: 10px; 
+    background-color: #007BFF;
+    color: #fff; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+/* driver register section */
+.driv_form h2 {
+    margin-bottom: 20px; 
+    text-align: center; 
+}
+
+.driv_form label{
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    font-size: 16px;
+}
+.driv_form{
+    display: flex; 
+    flex-direction: column; 
+}
+
+.driv_form input[type="text"],
+.driv_form input[type="email"],
+.driv_form input[type="password"],
+.driv_form input[type="file"],
+.driv_form input[type="tel"],
+.driv_form input[type="number"],
+.driv_form select,
+.driv_form textarea {
+    padding: 7px;
+    margin: 2px 0;
+    width: 100%;  /* Ensures all input fields take full width of the form */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.safety-input input[type="text"]{
+    padding: 7px;
+    margin: 1px 0;
+
+}
+
+
+
+.driv_form input[type="file"]{
+    margin: 0;
+    font-family: inherit;
+    font-size: 17px;
+    line-height: inherit;
+    padding: 4px;
+
+}
+
+
+
+
+
+/* Forgot Password */
+/* Add this to your CSS file (e.g., style.css) */
+.forgot-password-container {
+    width: 100%; 
+    max-width: 400px; 
+    margin: 0 auto; 
+    margin-top: 200px;
+    padding: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+.forgot-password-form {
+    display: flex; 
+    flex-direction: column; 
+}
+
+.forgot-password-form h2 {
+    margin-bottom: 20px; 
+    text-align: center; 
+}
+
+.forgot-password-form .form-group {
+    margin-bottom: 15px; 
+}
+
+.forgot-password-form label {
+    margin-bottom: 5px; 
+    font-weight: bold; 
+}
+
+.forgot-password-form input {
+    padding: 10px; 
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+    width: calc(100% - 22px); /* Ensures the input field takes up most of the width, accounting for padding and border */
+}
+
+.forgot-password-form button {
+    padding: 10px; 
+    background-color: #007BFF; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+.forgot-password-form button:hover {
+    background-color: #0056b3; /* Changes the background color of the button when hovering to a darker blue */
+}
+
+
+
+/* profile */
+
+.prof_container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    padding: 20px;
+    text-align: center;
+    /* margin-top: 50px; */
+    /* margin-left: 300px; */
+}
+.prof_container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #921616;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.profile-info p {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #555;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.profile-info strong {
+    color: #000;
+}
+.image {
+    /* text-align: center; */
+    width: 200px;
+    /* Container's dimensions */
+    height: 200px;
+    -webkit-border-radius: 75%;
+    -moz-border-radius: 75%;
+    box-shadow: 0 0 0 1px #eee;
+    background-size: cover;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: -30px;
+    align-content: center;
+  }
+  
+  
+  
+  .trick {
+    display: inline-block;
+    vertical-align: middle;
+    height: 150px;
+  }
+  
+  .image:hover {
+    box-shadow: 0px 5px 5px .2px #3F3F3F;
+  }
+  
+  .image:hover {
+    -webkit-transform: scale(1.12);
+    transform: scale(1.12);
+    -webkit-transition: 1.6s ease-in-out;
+    transition: 1.6s ease-in-out;
+  }
+  
+  .trick:hover img {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+
+  /* reset password */
+
+  .reset-container {
+    width: 100%; 
+    max-width: 400px; 
+    margin: 0 auto; 
+    margin-top: 50px;
+    padding: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    box-shadow: 0 0 10px rgba(1, 1, 1, 0.1); 
+}
+
+.Reset-form{
+    display: flex; 
+    flex-direction: column; 
+}
+.Reset-form h2 {
+    margin-bottom: 20px; 
+    text-align: center; 
+}
+.Reset-group {
+    margin-bottom: 15px; 
+}
+.Reset-group label {
+    margin-bottom: 5px; 
+    font-weight: bold; 
+}
+.Reset-group input {
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    width: calc(100% - 22px); 
+}
+button {
+    padding: 10px; 
+    background-color: #007BFF;
+    color: #fff; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+/* button:hover {
+    background-color: #0056b3; 
+} */
+
+/* update_profile */
+.resized-image {
+    width: 100px;  /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.error {
+    color: red;
+}
+
+
+/* listview */
+
+/* ............................................................................................ */
+
+
+body {
+    /* font-family: 'Arial', sans-serif; */
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+  
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #555555;
+}
+
+/* Hero Section Styling */
+.hero-section {
+    position: relative;
+    text-align: center;
+    color: white;
+    padding: 100px 0;
+    background-size: cover;
+    background-position: center;
+    
+}
+
+
+
+.hero-section p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.hero-section .btn-primary {
+    font-size: 1.5em;
+    padding: 10px 30px;
+    border-radius: 25px;
+}
+
+/* Search Bar */
+.search-bar form {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-bar input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    font-size: 1em;
+}
+
+.search-bar button {
+    width: auto;
+    padding: 5px;
+}
+.search-bar button:hover{
+    background-color: lavender;
+}
+
+/* Excavator Categories */
+.excavator-categories h2 {
+    font-size: 2em;
+    margin-bottom: 40px;
+}
+
+.card {
+    transition: transform 0.2s;
+    width: 350px;
+    height: 450px;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-title {
+    font-size: 1.4em;
+}
+
+.card-body {
+    text-align: center;
+}
+.card-body p{
+    font-size: 12px;
+}
+.card-body h3{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+/* Services Section */
+.services h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+.services .col-md-4 {
+    margin-bottom: 30px;
+}
+
+.services i {
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.services h4 {
+    margin-top: 10px;
+    font-size: 1.3em;
+}
+
+.services p {
+    font-size: 1.1em;
+}
+
+/* Safety Guidelines Section */
+.safety-guidelines {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+}
+
+.safety-guidelines h2 {
+    font-size: 2.3em;
+    margin-bottom: 20px;
+}
+
+.safety-guidelines p {
+    font-size: 1.1em;
+}
+
+/* Testimonials */
+.testimonials blockquote {
+    font-size: 1.2em;
+    font-style: italic;
+}
+
+.testimonials footer {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #888;
+}
+.img:hover {
+    /* opacity: 0.8; */
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* ...................................................................................... */
+
+/* Footer Styles */
+footer {
+    background-color: #0e0303; 
+    color: #f8f9fa; 
+    padding: 10px 0;
+    margin-top: 50px;
+    
+}
+
+footer a {
+    color: #f8b400; /* Excavator theme color (yellow/gold) */
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ffc107; /* Slightly lighter shade on hover */
+    text-decoration: underline;
+}
+
+footer h6 {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+footer p {
+    font-size: 0.9em;
+    line-height: 1.5em;
+}
+
+footer .container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+footer hr {
+    border-color: #f8b400;
+    margin: 20px 0;
+}
+
+footer .col-md-2 {
+    margin-bottom: 20px;
+}
+
+footer .spacer {
+    height: 510px;
+}
+
+/* Centered Icon Section */
+.footer-icons {
+    margin-top: 20px;
+}
+
+.footer-icons a {
+    color: #f8b400;
+    font-size: 1.5em;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.footer-icons a:hover {
+    color: #ffc107; /* Lighter shade on hover */
+}
+
+/*************************************************************************************************************************** */
+/* .text-center{
+    height: 200px;   
+} */
+
+/* Default font and color settings */
+.hero-section h1 {
+    transition: all 0.5s ease;
+    font-family: 'fangsong';
+    font-size: 3rem;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .hero-section p {
+    transition: all 0.5s ease;
+    font-family: 'monospace';
+    font-size: 1.2rem;
+    color: #ddd;
+  }
+  
+  .hero-section .btn {
+    transition: all 0.5s ease;
+    color: #fff;
+    background-color: #007bff;
+    font-weight: bold;
+  }
+  
+  /* Animated styles when section is clicked */
+  .animate-title {
+    font-size: 3.5rem;
+    color: #ffdd40;
+    font-family: 'Poppins', sans-serif;
+    transform: scale(1.1);
+  }
+  
+  .animate-subtitle {
+    font-size: 1.4rem;
+    color: #ffdd40;
+    font-family: 'Poppins', sans-serif;
+    transform: scale(1.05);
+  }
+  
+  .animate-btn {
+    color: #333;
+    background-color: #ffdd40;
+    font-weight: bold;
+    transform: scale(1.1);
+  }
+  
+/* Define animations */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply animation to each element */
+.hero-section h1 {
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+    animation-delay: 0.5s; /* Delay for smooth appearance */
+}
+
+.hero-section p {
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+    animation-delay: 1s; /* Delay for a staggered effect */
+}
+
+.hero-section .btn {
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+    animation-delay: 1.5s; /* Delay for the button */
+}
+
+.text-center img:hover{
+    transform: scale(1.25);
+}
+
+.text-center h4{
+    font-size: 15px;
+    font-weight: bold;
+}
+.text-center p{
+    font-size: 12px;
+}
+
+section {
+    margin-bottom: 30px;
+    padding: 20px;
+    /* border: 1px solid #ccc; */
+    border-radius: 5px;
+}
+h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+#payment-amount-section {
+    margin-top: 10px;
+}
+
+/* .form-group2 select{
+    height: 40px;
+} */
+.form-group{
+    /* font-size: 1.2em; */
+}
+.form-step {
+    display: none;
+    /* margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f9f9f9; */
+}
+
+.form-step.active {
+    display: block;
+}
+
+button.next-btn, button.prev-btn, button.submit-btn {
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 4px;
+    background-color: #00008b;
+    color: white;
+    cursor: pointer;
+}
+
+button.next-btn:hover, button.prev-btn:hover, button.submit-btn:hover {
+    background-color: #646ded;
+}
+
+.background{
+    background: url(../Images/excavatr.webp);
+    /* background-size:cover; */
+    /* background-position: center; */
+    /* background-repeat: no-repeat; */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #ffffff;
+}
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+table th {
+    background-color: #007bff;
+    color: white;
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+.status {
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 5px;
+    border-radius: 3px;
+}
+.status.Confirmed {
+    color: #155724;
+    background-color: #d4edda;
+}
+.status.Pending {
+    color: #856404;
+    background-color: #fff3cd;
+}
+.status.Delivered {
+    color: #004085;
+    background-color: #cce5ff;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #ffffff;
+}
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+table th {
+    background-color: #007bff;
+    color: white;
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+.status {
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 5px;
+    border-radius: 3px;
+}
+.status.Confirmed {
+    color: #155724;
+    background-color: #d4edda;
+}
+.status.Pending {
+    color: #856404;
+    background-color: #fff3cd;
+}
+.status.Delivered {
+    color: #004085;
+    background-color: #cce5ff;
+}

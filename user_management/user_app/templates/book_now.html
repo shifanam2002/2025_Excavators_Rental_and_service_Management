@@ -1,0 +1,91 @@
+  {% load static %}
+
+  <!-- {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">
+                {{ message }}
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %} -->
+
+
+    
+
+<head>
+        <title>Document</title>
+        <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
+        <link rel="stylesheet" href="{% static 'css/table.css' %}">
+        <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+   
+</head>
+<body>
+        
+    
+    
+    
+
+    <!-- Booking Modal -->
+<div id="bookingModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModals()">&times;</span>
+        <h2 class="modal-title">Book Service</h2>
+        <form action=" " method="POST" enctype="multipart/form-data" class="book-data">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.excavator_make_model.label_tag }}
+                {{ form.excavator_make_model }}
+            </div>
+            <div class="form-group">
+                {{ form.serial_number.label_tag }}
+                {{ form.serial_number }}
+            </div>
+            <div class="form-group">
+                {{ form.operating_hours.label_tag }}
+                {{ form.operating_hours }}
+            </div>
+            <div class="form-group">
+                {{ form.last_service_date.label_tag }}
+                {{ form.last_service_date }}
+            </div>
+            <div class="form-group">
+                {{ form.service_type.label_tag }}
+                {{ form.service_type }}
+            </div>
+            <div class="form-group">
+                {{ form.issue_description.label_tag }}
+                {{ form.issue_description }}
+            </div>
+            <div class="form-group">
+                {{ form.priority_level.label_tag }}
+                {{ form.priority_level }}
+            </div>
+            <div class="form-group">
+                {{ form.service_location.label_tag }}
+                {{ form.service_location }}
+            </div>
+            <div class="form-group">
+                {{ form.preferred_date.label_tag }}
+                {{ form.preferred_date }}
+            </div>
+            <div class="form-group">
+                {{ form.preferred_time_slot.label_tag }}
+                {{ form.preferred_time_slot }}
+            </div>
+            <!-- Add other fields similarly -->        
+            <input type="hidden" id="mech_id" name="mech_id" value="">
+            <button type="submit" class="submit-button">Request Booking</button>
+        </form>
+    </div>
+</div>
+
+
+
+<script src="{% static 'js/book.js' %}"></script>
+<script src="{% static 'js/model.js' %}"></script>
+
+</body>
+</html>
+
+    

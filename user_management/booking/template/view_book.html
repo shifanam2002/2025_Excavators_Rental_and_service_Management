@@ -1,0 +1,35 @@
+{% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Mechanic Service</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Order for {{ mechanic.username }}</h2>
+        
+        {% if mechanic.image %}
+            <img src="{{ mechanic.image.url }}" alt="Mechanic Photo" class="img-fluid mb-3" style="width: 200px;">
+        {% endif %}
+        
+        <p><strong>Specialization:</strong> {{ mechanic.area_of_expertise }}</p>
+        <p><strong>Experience:</strong> {{ mechanic.experience }} years</p>
+        <p><strong>Contact:</strong> {{ mechanic.phone }}</p>
+        
+        <!-- Order Form -->
+        <form method="post" action="{% url 'submit_order' mechanic.id %}">
+            {% csrf_token %}
+            <!-- Include form fields for order details, such as date and service type -->
+            <div class="form-group">
+                <label for="service_details">Service Details:</label>
+                <textarea id="service_details" name="service_details" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Place Order</button>
+        </form>
+    </div>
+</body>
+</html>
+{% include 'footer.html' %}

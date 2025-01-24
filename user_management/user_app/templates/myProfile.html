@@ -1,0 +1,40 @@
+{% include 'header.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+    
+
+
+<div class="profile-container">
+    <div class="profile-card">
+        <div class="profile-image">
+            {% if user.image %}
+                <img src="{{ user.image.url }}" alt="Profile Image">
+            {% else %}
+                <img src="{% static 'images/default_profile.jpg' %}" alt="Default Profile Image">
+            {% endif %}
+        </div>
+        <div class="profile-details">
+            <h2>Hi, {{ user.username }}</h2>
+            <p><strong>Email Address:</strong> {{ user.email }}</p>
+            <p><strong>Phone:</strong> {{ user.phone }}</p>
+            <p><strong>Place:</strong> {{ user.place }}</p>
+            <div class="profile-buttons">
+                <a href="/edit_profile" class="btn">Update Profile</a>
+                <a href="/password_change_form" class="btn secondary">Reset Password</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+{% include 'footer.html' %}

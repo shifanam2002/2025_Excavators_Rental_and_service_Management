@@ -1,0 +1,34 @@
+
+{% include 'header.html' %}
+{% load static %}
+<head>
+    <title>Booking Status Requests</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+   
+</head>
+<body>
+    <h1 class="bookk">Your Booking Status Requests</h1>
+    <div class="booking-container">
+        {% if bookings %}
+            {% for booking in bookings %}
+                <div class="booking-details">
+                    <p><strong>Booking ID:</strong> {{ booking.driver_id }}</p>
+                    <p><strong>Status:</strong><span class="status"> {{ booking.approval_status }}</span></p>
+                    <p><strong>Requested Date:</strong> {{ booking.booking_date }}</p>
+                    <p><strong>Requested Time:</strong> {{ booking.booking_time }}</p>
+                    <p><strong>Place:</strong> {{ booking.location }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="no-requests">
+                <span>Sorry!</span>
+                <p>You have no booking requests at the moment.</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/2748/2748558.png" alt="No Requests">
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
+{% include 'footer.html' %}

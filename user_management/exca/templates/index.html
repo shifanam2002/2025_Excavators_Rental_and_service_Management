@@ -1,0 +1,114 @@
+{% load static %}
+
+{% include 'header.html'%}
+  
+<head>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+      
+       <!-- Hero Section -->
+       <section id="hero-section" class="hero-section" style="background-image: url(../static/Images/a1.jpg); background-size: cover; color: #fff; text-align: center; height: 700px; position: relative;">
+        <div class="container">
+          <h1 id="hero-title">Rent an Excavator Today!</h1>
+          <p id="hero-subtitle">Get the best equipment for your needs along with top-notch services.</p>
+          <a href="/#category" id="hero-btn" class="btn btn-primary btn-lg">Explore Excavators</a>
+        </div>
+      </section>
+  
+
+
+
+    <!-- Search Bar -->
+    <!-- <div  >
+      <section class="search-bar" style="padding: 50px 0;">
+        <div class="container">
+          <form action="/search" method="GET">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for Excavators, Services, or Drivers">
+              <span class="input-group-btn">
+                <a href="/search"><button class="btn btn-default" type="submit">Search</button></a>
+              </span>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div> -->
+
+  
+
+
+      <!-- Excavator Categories -->
+      <section class="excavator-categories" id="category">
+        <div class="container">
+            <h2>Excavator Categories</h2>
+            <div class="row">
+                {% for category in categories %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="{{ category.image.url }}" alt="Excavator" style="width: 330px; height: 250px;">
+                        <div class="card-body boby">
+                            <h3 class="card-title">{{ category.name }}</h3>
+                            <p>{{ category.description }}</p>
+                            <div class="view-more">
+                              <a href="{% url 'mini_exca' category.id %}" class="btn btn-info view_more">View More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+<!-- About us  -->
+    <section class="about-us"  id="about-us">
+      <img src="../../user_app/static/Images/wheeled.jpg" alt="Excavator Background" class="background-image">
+      <div class="content">
+        <h2>We Provide Unrivalled Quality in Excavator Rentals</h2>
+        <p>
+          The Excavators Rental and Service Management System is a comprehensive platform designed to streamline the rental, maintenance, and operation of excavators. Since its inception, we have ensured safety measures, emergency services, and the availability of spare parts, while offering authorized driver searches and exceptional service quality.
+        </p>
+        <!-- <button>About Us</button> -->
+      </div>
+    </section>
+
+  
+    <!-- Services Section -->
+  <section class="services"  id="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="row">
+        
+        <div class="col-md-4 text-center">
+          <!-- <i class="glyphicon glyphicon-wrench"></i> -->
+           <img src="../static/Images/maintenance.png" alt="" width="150" height="137">
+          <h4>Maintenance Services</h4>
+          <p>Keep your equipment running smoothly with our expert services.</p>
+          <a href="/view_mech" class="btn btn-info" style="font-size: 15px;" >Request Service</a>
+        </div>
+        <div class="col-md-4 text-center">
+          <i class="glyphicon glyphicon-cog"></i>
+           <img src="https://thumbs.dreamstime.com/b/ai-324352717.jpg" alt=""  width="150" height="130" style="margin-bottom: 20px;">
+          <h4>Spare Parts</h4>
+          <p>Order genuine spare parts for your machines.</p>
+          <a href="/spare_view" class="btn btn-info" style="font-size: 15px;" >Order Parts</a>
+        </div>
+        <div class="col-md-4 text-center">
+          <!-- <i class="glyphicon glyphicon-user"></i> -->
+          <img src="../static/Images/driver.png" width="150" height="auto" alt="" style="margin-top: 0;">
+          <h4>Authorized Drivers</h4>
+          <p>Find certified excavator operators for your job.</p>
+          <a href="/view_driver" class="btn btn-info" style="font-size: 15px;">Find a Driver</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  
+
+
+  
+  
+{% include 'footer.html' %}

@@ -1,0 +1,31 @@
+{% include 'header.html' %}
+{% load static %}
+
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}">
+</head>
+<body class="background"> 
+    
+
+<div class="containers">
+    <div class="register-container">
+        <form class="Reg-form" action=" " method="POST" enctype="multipart/form-data" class="book-data">
+            <h2>Contact Us</h2>
+
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button>Submit</button>
+        </form>
+    </div>
+</div>
+</body>
+{% include 'footer.html' %}
+
+
+
+
+
+
+

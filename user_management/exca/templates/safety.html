@@ -1,0 +1,83 @@
+{% include 'header.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excavator Safety Measures</title>
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/safety.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
+
+</head>
+<body class="saf" style="background-color: white;
+">
+    <header>
+        <h1 class="exca">Excavator Safety Measures</h1>
+    </header>
+
+    <div class="containerss">
+        <!-- <h2>Important Safety Tips</h2>
+        <p>To ensure the safety of operators and bystanders, it is crucial to follow these excavator safety measures:</p> -->
+         <div class="video-container">
+            <video width="700" muted id="safetyVideo">
+                <source src="{% static 'video/safety_video.mp4' %}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video> 
+        </div>
+        <div class="section">       
+        <div class="safety-item">
+            <p class="pp"><strong>Conduct a Pre-Inspection:</strong> Inspect the excavator for any damage, loose parts, or fluid leaks before starting work.</p>
+        </div>
+        </div>
+        <div class="section">
+        <div class="safety-item">
+            <p class="pp"><strong>Wear Proper Safety Gear:</strong> Always wear a hard hat, reflective vest, steel-toed boots, and safety gloves while operating or working near an excavator.</p>
+        </div>
+        </div>
+        <div class="section">
+
+        <div class="safety-item">
+            <p class="pp"><strong>Check the Surroundings:</strong> Ensure the work area is clear of obstacles, overhead power lines, and unauthorized personnel.</p>
+        </div>
+        </div>
+        <div class="section">
+
+        <div class="safety-item">
+            <p class="pp"><strong>Use Seatbelts:</strong> Operators must always wear seatbelts while operating the excavator to prevent injury during sudden movements or accidents.</p>
+        </div>
+        </div>
+        <div class="section">
+
+        <div class="safety-item">
+            <p class="pp"><strong>Stabilize the Machine:</strong> Lower the blade and stabilize the machine on a firm, level surface before beginning work.</p>
+        </div>
+        </div>
+        <div class="section">
+
+        <div class="safety-item">
+            <p class="pp"><strong>Follow Load Limits:</strong> Avoid overloading the excavator beyond its capacity to maintain stability and prevent tipping.</p>
+        </div>
+        </div>
+        <div class="section">
+        <div class="safety-item">
+            <p class="pp"><strong>Operate at Safe Speeds:</strong> Avoid sudden or jerky movements and operate the machine at safe speeds, especially in tight spaces.</p>
+        </div>
+        </div>
+        <div class="emergency-alert">
+            <h2>🚨 Emergency Measures 🚨</h2>
+            <p class="pp">In case of an emergency:</p>
+            <ul>
+                <li>Shut down the excavator immediately and evacuate the area.</li>
+                <li>Report incidents or hazards to the site supervisor immediately.</li>
+                <li>Have a first aid kit and fire extinguisher easily accessible on-site.</li>
+            </ul>
+        </div>
+    </div> 
+</body>
+</html>
+
+
+{% include 'footer.html' %}

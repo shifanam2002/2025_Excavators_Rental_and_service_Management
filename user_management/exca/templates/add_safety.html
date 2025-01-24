@@ -1,0 +1,106 @@
+{% include 'header.html' %}
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<style>
+/* .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+} */
+h1 {
+    text-align: center;
+    color: #333;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+label {
+    font-weight: bold;
+}
+input, textarea, button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+button {
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #0056b3;
+}
+</style>
+</head>
+<script>
+    function addSafety() {
+        // Create a new input container
+        const container = document.createElement('div');
+        container.classList.add('input-container');
+
+        // Create the input field
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.name = 'safety_precaution';
+        input.classList.add('safety-input');
+        input.placeholder = 'Enter safety precaution';
+
+        // Create the remove button
+        const removeButton = document.createElement('button');
+        removeButton.type = 'button';
+        removeButton.classList.add('btn-close');
+        removeButton.innerHTML = '❌';
+        removeButton.onclick = function() {
+            container.remove();
+        };
+
+        // Append input and button to the container
+        container.appendChild(input);
+        container.appendChild(removeButton);
+
+        // Add the container to the formset
+        document.getElementById('safety-formset').appendChild(container);
+    }
+</script>
+</head>
+<body>
+<div class="container">
+    <h1>Add Safety Records</h1>
+    <form method="POST" action="{% url 'add_safety' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="safety-title">Safety Title:</label>
+            <input type="text" id="safety-title" name="safety_title" class="safety-input" placeholder="Enter title" required>
+        </div>
+
+        <!-- <div class="form-group">
+            <label for="safety-description">Description:</label>
+            <input id="safety-description" name="description" class="safety-input" placeholder="Enter description" required>
+        </div> -->
+        <div class="form-group">
+            <label for="safety-precautions">Safety Precautions:</label>
+            <div id="safety-formset">
+                <!-- Initial input field -->
+                <div class="input-container">
+                    <input type="text" name="precaution" class="safety-input" placeholder="Enter safety precaution">
+                    <button type="button" class="btn-close" onclick="removeInput(this)">❌</button>
+                </div>
+            </div>
+            <button type="button" class="btn safety-add" onclick="addSafety()">➕ Add Another</button>
+        </div>
+        <button type="submit" class="btn">Save Safety Records</button>
+    </form>
+
+</div>
+</body>
+</html>
+
+
+
+{% include 'footer.html' %}

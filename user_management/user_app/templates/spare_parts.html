@@ -1,0 +1,112 @@
+{% include 'header.html' %}
+{% load static %}
+<head>
+
+    <title>Spare Parts Inventory</title>
+    <link rel="stylesheet" href="{% static 'css/spare.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+    <div>
+        <h2 class="text-center">Spare Parts Inventory</h2>
+        <a href="/add_spare"><button>Add new spare part</button></a>
+
+        <!-- Spare Parts Table -->
+        <table>
+            <thead> 
+                <tr>
+                    <th>Part ID</th>
+                    <th>Part Name</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Supplier</th>
+                    <th>Availability</th>
+                    <th>Price</th>
+                    <th>Material</th>
+                    <th>warranty</th>
+                    <th>modal name</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for spare in spares %}
+                <tr>
+                    <td>{{ spare.id }}</td>
+                    <td>{{ spare.part_name }}</td>
+                    <td>{{ spare.description }}</td>
+                    <td>{{ spare.type }}</td>
+                    <td>{{ spare.supplier }}</td>
+                    <td>{{ spare.availability }}</td>
+                    <td>{{ spare.price }}</td>
+                    <td>{{ spare.material }}</td>
+                    <td>{{ spare.warranty }}</td>
+                    <td>{{ spare.modal_name }}</td>
+                    <td>
+                        {% if spare.image %}
+                        <img src="{{ spare.image.url }}" alt="{{ spare.part_name }}" style="width: 100px; height: auto;">
+                        {% else %}
+                        No image available
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'spare_update' spare.id %}" class="btn">Update</a>
+                        <a href="{% url 'spare_delete' spare.id %}" class="btn">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+            <!-- Add New Spare Part
+            <div>
+                <h2>Add New Spare Part</h2>
+                <form method="POST" action="{% url 'spare_parts' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                
+                    <div class="form-groups">
+                        {{ form.part_name.label_tag }}
+                        {{ form.part_name }}
+                    </div>
+                    <div class="form-groups">
+                        {{ form.supplier.label_tag }}
+                        {{ form.supplier }}
+                    </div>
+                    <div class="form-groups">
+                        {{ form.price.label_tag }}
+                        {{ form.price }}
+                    </div>   
+                    <div class="form-groups">
+                        {{ form.image.label_tag }}
+                        {{ form.image }}
+                    </div>
+                    <div class="form-groups">
+                        {{ form.description.label_tag }}
+                        {{ form.description }}
+                    </div>
+                    <div class="form-groups">
+                        {{ form.availability.label_tag }}
+                        {{ form.availability }}
+                    </div>
+                    <div class="form-groups">
+                        {{ form.material.label_tag }}
+                        {{ form.material }}
+                    </div>
+                    <div class="form-groups">
+                        {{ form.modal_name.label_tag }}
+                        {{ form.modal_name }}
+                    </div>
+                    <div class="form-groups">
+                        {{ form.warranty.label_tag }}
+                        {{ form.warranty }}
+                    </div>
+                    <button class="btn" type="submit">Add Part</button>
+                </form>
+            </div>
+        </div> -->
+</body>
+</html>
+
+
+{% include 'footer.html' %}

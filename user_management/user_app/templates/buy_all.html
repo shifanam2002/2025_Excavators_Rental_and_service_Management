@@ -1,0 +1,136 @@
+{% include 'header.html' %}
+{% load static %}
+
+<html>
+<head>
+
+    <title>Checkout</title>
+</head>
+<body>
+
+    <div class="const">
+        <h3>Secure checkout</h3>
+        <a href="{% url 'cart_view' %}" class="btn view-cart">🛒 View Cart</a>
+    </div>
+    <div class="back-button-container">
+        <button class="btn back-btn" onclick="goBack()">🔙 Back</button>
+    </div>
+
+    <!-- <div class="checkout-container"> -->
+        <!-- Address Selection Section -->
+        <div class="address-container">
+            <h2>Select Delivery Address</h2>
+            <button id="add-address-btn"> Add Address </button>
+
+            <!-- Existing Addresses -->
+            <div class="address-list">
+                <h3>Your Address</h3>
+                <div class="address-card">
+                    <input type="radio" name="selected_address" id="address1">
+                    {% for address in addresses %}
+                    <li>
+                        <strong>{{ address.name }}</strong><br>
+                        {{ address.address }}<br>
+                        {{ address.city }}, {{ address.state }} - {{ address.pincode }}
+                    </li>
+                    {% empty %}
+                    <p>No saved addresses yet.</p>
+                    {% endfor %}
+                </div>       
+            </div>
+        </div>
+        <div class="spare-detailss">
+            <div>
+                {% for item in cart_items %}
+                <div class="cart-item">
+                    <!-- <h3>{{ item.spare.name }}</h3> -->
+                    <img src="{{ item.spare.image.url }}" alt="{{ item.spare.name }}" class="product-image" height="100px" width="150px">
+                    <h3>{{ item.spare.part_name }}</h3>
+                    <p><strong> Description:</strong> {{ item.spare.description }}</p>
+                    <p><strong>Category:</strong> {{ item.spare.type }}</p>
+                    <p><strong>Quantity:</strong> {{ item.quantity }}</p>
+                    <p><strong>Price:</strong> ₹{{ item.spare.price }}</p>
+                    <!-- <p>Total: ₹{{ item.spare.price|floatformat:2 }}</p> -->
+                </div>
+                {% endfor %}
+            </div>
+            <div class="total-price">
+                Grand Total: ₹{{ total_price|floatformat:2 }}
+            </div>
+            <form method="POST">
+                {% csrf_token %}
+            </form>
+        </div>
+
+<form id="paymentForm" method="POST">
+    {% csrf_token %}
+
+    <div class="payment-container">
+        <h2>Payment Method</h2>
+
+            <div class="payment-method">
+                <input type="radio" name="payment_method" id="gpay" value="gpay">
+                <label for="gpay">
+                    <p><strong>UPI ID</strong></p>
+                    <!-- <input type="text" placeholder="Enter any UPI ID"> -->
+                </label>
+            </div>
+
+            <!-- <div class="payment-method">
+                <input type="radio" name="payment_method" id="credit_card" value="credit_card">
+                <label for="credit_card">
+                    <p><strong>Credit or Debit Card</strong></p>
+                    <img src="..//static/Images/cardr_imagess.jpg" alt="Card Icons" style="width: 150px;">
+                </label>
+            </div> -->
+
+            <div class="payment-method">
+                <input type="radio" name="payment_method" id="cash_on_delivery" value="cash_on_delivery">
+                <label for="cash_on_delivery">
+                    <p><strong>Cash on Delivery</strong></p>
+                </label>
+            </div>
+ 
+            <input type="hidden" name="total_amount" value="{{ total_price }}">
+            <input type="hidden" name="cart_item_ids" value="{{ cart_item_ids }}">
+            <!-- <input type="hidden" name="cart_item_ids" value="{{ cart_item_ids|join:',' }}"> -->
+            <button type="button" class="btn btn-add" onclick="handlePayment()">Use this payment method</button>
+    
+    </div>
+</form>
+
+
+
+
+        <!-- Popup Form -->
+        <div id="popup-overlay" class="popup-overlay" style="display: none;">
+            <div class="popup form-group" >
+                <h3>Add New Address</h3>
+                <form id="address-form" method="POST" action="{% url 'address_view' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-add">Save Address</button>
+                    <button id="close-popup-btn" class="btn btn-add">Close</button>
+    
+                </form>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+
+</body>
+
+<script>
+
+</script>
+
+</html>
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/order.css' %}">
+
+
+{% include 'footer.html' %}

@@ -1,0 +1,120 @@
+{% include 'header.html' %}
+{% load static %}
+
+
+<head>
+    <style>
+
+
+    </style>
+    
+</head>
+<body>
+    <div class="consts">
+        <!-- Secure Checkout and View Cart Section -->
+        <div class="const">
+            <h3>Secure checkout</h3>
+            <a href="{% url 'cart_view' %}" class="btn view-cart">🛒 View Cart</a>
+        </div>
+        <div class="back-button-container">
+            <button class="btn back-btn" onclick="goBack()">🔙 Back</button>
+        </div>
+
+        <div class="checkout-container">
+            <!-- Address Selection Section -->
+            <div class="address-container">
+                <h2>Select Delivery Address</h2>
+                <button id="add-address-btn"> Add Address </button>
+
+                <!-- Existing Addresses -->
+                <div class="address-list">
+                    <h3>Your Address</h3>
+                    <div class="address-card">
+                        <input type="radio" name="selected_address" id="address1">
+                        {% for address in addresses %}
+                        <li>
+                            <strong>{{ address.name }}</strong><br>
+                            {{ address.address }}<br>
+                            {{ address.city }}, {{ address.state }} - {{ address.pincode }}
+                        </li>
+                        {% empty %}
+                        <p>No saved addresses yet.</p>
+                        {% endfor %}
+                    </div>       
+                </div>
+            </div>
+
+                <!-- Spare Details Section -->
+                <div class="spare-details">
+                    <h3>{{ spare.name }}</h3>
+                    <p><strong>Product:</strong> {{ spare.part_name }}</p>
+                    <!-- <p><strong>Price:</strong> ₹{{ spare.price }}</p> -->
+                    <div class="highlight-price">
+                        <p><strong>Total Price:</strong> ₹{{ spare.price }}</p>
+                    </div>
+                </div>
+                
+
+
+            <!-- Payment Methods Section -->
+            <div class="payment-container">
+                <h2>Payment Method</h2>
+                <form action="/process_payment" method="POST">
+                    {% csrf_token %}
+
+                    <div class="payment-method">
+                        <input type="radio" name="payment_method" id="amazon_pay" value="amazon_pay">
+                        <label for="amazon_pay">
+                            <p><strong>UPI ID</strong></p>
+                            <input type="text" placeholder="Enter any UPI ID">
+                        </label>
+                    </div>
+
+                    <div class="payment-method">
+                        <input type="radio" name="payment_method" id="credit_card" value="credit_card">
+                        <label for="credit_card">
+                            <p><strong>Credit or Debit Card</strong></p>
+                            <img src="..//static/Images/cardr_imagess.jpg" alt="Card Icons" style="width: 150px;">
+                        </label>
+                    </div>
+
+                    <div class="payment-method">
+                        <input type="radio" name="payment_method" id="net_banking" value="net_banking">
+                        <label for="net_banking">
+                            <p><strong>Cash on Delivery</strong></p>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-add">Use this payment method</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+    <!-- Popup Form -->
+    <div id="popup-overlay" class="popup-overlay" style="display: none;">
+        <div class="popup form-group" >
+            <h3>Add New Address</h3>
+            <form id="address-form" method="POST" action="{% url 'address_view' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-add">Save Address</button>
+                <button id="close-popup-btn" class="btn btn-add">Close</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+    
+
+
+    <link rel="stylesheet" href="{% static 'css/order.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</body>
+
+
+{% include 'footer.html' %}

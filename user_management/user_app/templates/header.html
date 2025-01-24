@@ -1,0 +1,200 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management</title>
+
+  <!-- <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"> -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+  
+</head>
+
+<body>
+
+<!-- {% if messages %}
+    <div>
+        {% for message in messages %}
+            {% if message.tags == 'location_update' %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %} -->
+
+{% if messages %}
+{% for message in messages %}
+    {% if 'suc' in message.tags %}
+        <script> alert("{{ message }}"); </script>
+    {% elif 'fail' in message.tags %}
+        <script> alert("{{ message }}"); </script>
+    {% endif %}
+{% endfor %}
+{% endif %}
+
+
+  <div class="header-w3layouts header">
+    <nav class="navbar navbar-expand-lg navbar-light" style= "padding: 30px;">
+      <div class="container">
+        <a class="navbar-brand" style="font-size: 30px;color: white;" href="/" >Excavator Services</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto">
+            {% if request.session.ut == 0 %}
+              <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+              <li class="nav-item"><a href="/#about-us" class="nav-link">About</a></li>
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" style="font-size: 15px;" href="/#category">Rent Excavators</a>
+                  <a class="dropdown-item" style="font-size: 15px;" href="/view_mech">Mechanics</a>
+                  <a class="dropdown-item" style="font-size: 15px;" href="/view_driver">Drivers</a>
+                  <a class="dropdown-item" style="font-size: 15px;" href="/spare_view">Order Spare Parts</a>
+                </div>
+              </li>              
+              <li class="nav-item"><a href="/safety" class="nav-link">Saftey Measures</a></li>
+              <li class="nav-item"><a href="/profile" class="nav-link">Profile</a></li>
+              <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+              
+            {% elif request.session.ut == 1 %}
+              <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+              <li class="nav-item"><a href="/#about-us" class="nav-link">About</a></li>
+
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">Users</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" style="font-size: 15px;" href="/model_list">All Users</a>
+                  <a class="dropdown-item" style="font-size: 15px;" href="/modellist_driver">Drivers</a>
+                  <a class="dropdown-item" style="font-size: 15px;" href="/modellist_mechanic">Mechanics</a>
+                </div>
+              </li>
+              <li class="nav-item"><a href="/add_excavator" class="nav-link">Manage</a></li>
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">Requests</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" style="font-size: 15px;" href="/spare_request">Spare request</a>
+                  <a class="dropdown-item" style="font-size: 15px;" href="/book_request">Rental requests</a>
+                  <a class="dropdown-item" style="font-size: 15px;" href="/view_contact">view enquiry</a>
+                </div>
+              </li>
+              <li class="nav-item"><a href="/safety" class="nav-link">Saftey Measures</a></li>
+
+              <li class="nav-item"><a href="{% url 'view_orders' %}" class="nav-link">Orders</a></li>
+              <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+            {% elif request.session.ut == 2 %}
+              <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+              <li class="nav-item"><a href="/#about-us" class="nav-link">About</a></li>
+
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">Services</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" style="font-size: 15px;" href="/view_mech">Mechanics</a>
+                  <a class="dropdown-item" style="font-size: 15px;" href="/view_driver">Drivers</a>
+                  <a class="dropdown-item" style="font-size: 15px;" href="/spare_view">Order Spare Parts</a>
+                </div>
+              </li>  
+
+              <li class="nav-item"><a href="/view_book" class="nav-link">View Booking</a></li>
+              <!-- <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">View</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" style="font-size: 15px;" href="/view_book">Bookings</a>
+                </div>
+              </li> -->
+
+              <li class="nav-item"><a href="/safety" class="nav-link">Saftey Measures</a></li>
+
+              <li class="nav-item"><a href="/profile" class="nav-link">Profile</a></li>
+              <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+              <li class="nav-item">
+                <form method="GET" action="{% url 'update_driver_location' %}">
+                    <button type="submit" class="nav-link btn btn-link" style=" border: none; background: none;">
+                        <!-- Update Location -->
+                        <img class="img"  src="{% static 'Images/location.png' %}" alt="Update Location" title="Click here to update your location" style="width: 40px; height: 40px;">
+
+                    </button>
+                </form>
+            </li>
+              
+            {% elif request.session.ut == 3 %}
+              <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" style="font-size: 15px;" href="/view_mech">Mechanics</a>
+                  <a class="dropdown-item" style="font-size: 15px;" href="/view_driver">Drivers</a>
+                  <a class="dropdown-item" style="font-size: 15px;" href="/spare_view">Order Spare Parts</a>
+                </div>
+              </li>                
+              <li class="nav-item"><a href="/view_book" class="nav-link">View Bookings</a></li>
+
+              <!-- <li class="nav-item"><a href="/safety" class="nav-link">Saftey Measures</a></li> -->
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">Saftey Measures</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" style="font-size: 15px;" href="{% url 'add_safety' %}">Add Saftey measures</a>
+                  <a class="dropdown-item" style="font-size: 15px;" href="{% url 'safety' %}">Saftey measures</a>
+              <li class="nav-item"><a href="/profile" class="nav-link">Profile</a></li>
+              <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+              <li>
+              
+                
+                  {% if user.is_authenticated and user.id %}
+                  <form method="GET" action="{% url 'update_mechanic_location' user.id %}">
+                      <button type="submit" class="nav-link btn btn-link" style=" border: none; background: none;">
+                          <!-- Update Location -->
+                          <img class="img"  src="../static/Images/location.png" alt="Update Location" title="Click here to update your location" style="width: 40px; height: 40px;">
+
+                        </button>
+                  </form>
+                {% endif %}
+              
+            {% else %}
+              <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+              <li class="nav-item"><a href="#about-us" class="nav-link">About</a></li>
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" style="font-size: 15px;" href="/view_mech">Mechanics</a>
+                  <a class="dropdown-item" style="font-size: 15px;" href="/view_driver">Drivers</a>
+                  <a class="dropdown-item" style="font-size: 15px;" href="/spare_view">Order Spare Parts</a>
+                </div>
+              </li>                
+              <li class="nav-item"><a href="/safety" class="nav-link">Saftey Measures</a></li>
+
+              <li class="nav-item"><a href="/login" class="nav-link">Sign In</a></li>
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" id="signupDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sign Up</a>
+                <div class="dropdown-menu" aria-labelledby="signupDropdown">
+                  <a class="dropdown-item " style="font-size: 15px;" href="/register">User </a>
+                  <a class="dropdown-item" style="font-size: 15px;" href="/driver">Driver </a>
+                  <a class="dropdown-item" style="font-size: 15px;" href="/mechanics">Mechanic </a>
+                </div>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+  </div>
+  
+
+
+
+  
+</body>
+</html>

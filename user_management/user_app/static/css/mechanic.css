@@ -1,0 +1,133 @@
+.mechanic-card {
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+.mechanic-card:hover {
+    transform: scale(1.05);
+}
+.mechanic-photo {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+
+.submit-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+.submit-button:hover {
+    background-color: #45a049;
+}
+
+.contact-button {
+    background-color: #007bff; /* Button color */
+    color: #fff; /* Text color */
+    border: none; /* No border */
+    border-radius: 25px; /* Rounded corners */
+    padding: 10px 20px; /* Padding for size */
+    font-size: 16px; /* Font size */
+    display: inline-flex; /* Align icon and text */
+    align-items: center; /* Center icon and text vertically */
+    gap: 8px; /* Space between icon and text */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: all 0.3s ease; /* Smooth transition for hover */
+    }
+
+    .contact-button:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+        color: #fff; /* Ensure text remains white */
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Slightly deeper shadow */
+        transform: translateY(-2px); /* Subtle lift effect */
+    }
+
+    .contact-button i {
+        font-size: 18px; /* Adjust icon size */
+    }  
+    .text-dark{
+        font-size: 19px;
+    }
+    .col-md-8 p,h6{
+        font-size: 15px;  
+    }
+    /* **************************************** */
+
+    .open-button {
+  background-color: #0d6b01;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 10px;
+  right: 28px;
+  width: 280px;
+  margin-top: 40px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+.closeup{
+    /* margin-le ft: -600px; */
+    background-color: red;
+}
+.closeup:hover{
+    background-color: rgb(216, 20, 20);
+}

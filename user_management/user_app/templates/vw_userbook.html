@@ -1,0 +1,55 @@
+{% include 'header.html' %}
+{% load static %}
+
+<head>
+
+    <title>Confirmed Bookings</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+
+</head>
+<body>
+    <h1 class="your">Your Confirmed Drivers</h1>
+    <div class="booking-container">
+        {% if bookings %}
+            {% for booking in bookings %}
+                <div class="booking-details">
+                    <p><strong>Booking ID:</strong> {{ booking.driver_id }}</p>
+                    <p><strong>Status:</strong> <span class="status">{{ booking.approval_status }}</span></p>
+                    <p><strong>Service Status:</strong> <span class="status">{{ booking.service_status }}</span></p>
+
+                    <p><strong>Requested Date:</strong> {{ booking.booking_date }}</p>
+                    <p><strong>Requested Time:</strong> {{ booking.booking_time }}</p>
+                    <p><strong>Place:</strong> {{ booking.location }}</p>
+                    <!-- <p><strong>Rate:</strong> <span class="rate">${{ booking.rate }}</span></p> -->
+                    
+                    <!-- Buttons for Actions -->
+                    <div class="action-buttons">
+                        <a href="{% url 'rate_booking' booking.id %}" class="btn btn-rate">Rate Driver</a>
+                    </div>
+                </div>
+                <hr>
+            {% endfor %}
+        {% else %}
+        <div class="no-requests">
+            <span>Sorry!</span>
+            <p>You have no Confirmed bookings at the moment.</p>
+            <img src="https://cdn-icons-png.flaticon.com/512/2748/2748558.png" alt="No Requests">
+        </div>
+        {% endif %}
+    </div>
+
+
+
+
+
+
+
+</body>
+</html>
+
+{% include 'footer.html' %}
+
+
+

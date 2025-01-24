@@ -1,0 +1,73 @@
+{% include 'header.html' %}
+{% load static %}
+
+
+<head>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/spares.css' %}">
+
+</head>
+<body>
+    <h2>Update Spare Part</h2>
+    <div class="container">
+        <!-- <h1>Update Spare Part</h1> -->
+        <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.part_name.label }}
+                {{ form.part_name }}
+            </div>
+            <div class="form-group">
+                {{ form.supplier.label }}
+                {{ form.supplier }}
+            </div>
+            <div class="form-group">
+                {{ form.price.label }}
+                {{ form.price }}
+            </div>
+            <div class="form-group">
+                {{ form.image.label }}
+                {{ form.image }}
+            </div>      
+            {% if form.image.value %}
+                <!-- <p>Current Image:</p> -->
+                <!-- <img src="{{ form.image.value.url }}" alt="Current Image"> -->
+            {% endif %}
+            <div class="form-group">
+                {{ form.type.label }}
+                {{ form.type }}
+            </div> 
+            <div class="form-group">
+                {{ form.description.label }}
+                {{ form.description }}
+            </div> 
+            <div class="form-group">
+                {{ form.availability.label }}
+                {{ form.availability }}
+            </div> 
+            <div class="form-group">
+                {{ form.material.label }}
+                {{ form.material }}
+            </div> 
+            <div class="form-group">
+                {{ form.warranty.label }}
+                {{ form.warranty }}
+            </div> 
+            <div class="form-group">
+                {{ form.modal_name.label }}
+                {{ form.modal_name }}
+            </div> 
+            <div class="form-group">
+                {{ form.quantity.label }}
+                {{ form.quantity }}
+            </div> 
+            <button type="submit">Update</button>
+        </form>
+        <a href="{% url 'spare_parts' %}">Back to Spare Parts</a>
+    </div>
+</body>
+</html>
+
+
+{% include 'footer.html' %}

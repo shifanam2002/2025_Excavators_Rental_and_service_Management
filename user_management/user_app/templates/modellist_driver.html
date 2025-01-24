@@ -1,0 +1,79 @@
+{% load static %}
+{% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyModel List</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/driver.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
+</head>
+<body>
+    <div class="container">
+        <h1>MyModel List</h1>
+        <!-- <a href="{% url 'model_create' %}" class="btn btn-primary mb-3">Create New Model</a> -->
+        <table class="table table-striped">
+            <thead> 
+                <tr>
+                    <th>Driver photo</th>
+                    <th>Driver Name</th>
+                    <!-- <th>Email</th> -->
+                    <!-- <th>Phone</th> -->
+                    <th>License Number</th>
+                    <th>Experience</th>
+                    <th>specialization</th>
+                    <th>Certificates</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for Mmodels in Mmodel %}
+                <tr>
+                    <td>
+                        {% if Mmodels.image %}
+                            <a href="{{ Mmodels.image.url }}" target="_blank">
+                                <img src="{{ Mmodels.image.url }}" alt="Driver Image" style="width: 100px; height: auto;">
+                        {% else %}
+                            No Image
+                        {% endif %}   </a>
+                    </td>
+                    <td>{{ Mmodels.username }}</td>
+                    <!-- <td>{{ Mmodels.email }}</td> -->
+                    <!-- <td>{{ Mmodels.phone }}</td> -->
+                    <td>{{ Mmodels.license_number }}</td>
+                    <td>{{ Mmodels.experience }}</td>
+                    <td>{{ Mmodels.specialization }}</td>
+                    <td>
+                        {% if Mmodels.certificates %}
+                            <a href="{{ Mmodels.certificates.url }}" target="_blank">View Certificate</a>
+                        {% else %}
+                            No Certificate
+                        {% endif %}
+                    </td>
+                    <td>{{ Mmodels.approval_status }}</td>
+                    <td>
+                        <!-- Approve button -->
+                        <form action="{% url 'approve_driver' Mmodels.id %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-success">Approve</button>
+                        </form>
+                        <!-- Reject button -->
+                        <form action="{% url 'reject_driver' Mmodels.id %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Reject</button>
+                        </form>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+{% include 'footer.html' %}

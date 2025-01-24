@@ -1,0 +1,27 @@
+{% include 'header.html' %}
+
+{% load static %}
+
+
+<head>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/service.css' %}">
+
+</head>
+<body>
+    <div class="form-container">
+        <img src="../static/Images/Service720x536.jpg" alt="Service Registration" height="430px", width="400px">
+
+        
+        <form method="post">
+            <h1>Add New Service</h1>    
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Add Service</button>
+        </form>
+    </div>
+</body>
+</html>
+
+{% include 'footer.html' %}

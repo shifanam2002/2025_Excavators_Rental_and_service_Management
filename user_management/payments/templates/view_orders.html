@@ -1,0 +1,59 @@
+
+
+{% load static %}
+{% include 'header.html' %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Admin Orders</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1>View Orders</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Cust name</th>
+                <th>Spare Name</th>
+                <th>Spare Price</th>
+                <th>Quantity</th>
+                <!-- <th>Total Price</th> -->
+                <th>Address</th>
+                <th>Order Date</th>
+                <th>Delivery Date</th>
+                <th>payment Meth</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.address.name }}</td>
+                    <td>{{ order.cart.spare.part_name }}</td>
+                    <td>{{ order.cart.spare.price }}</td>
+                    <td>{{ order.cart.quantity }}</td>
+                    <!-- <td>{{ order.cart.total_amount }}</td> -->
+                    <!-- <td>{{ order.cart.quantity|floatformat:2|floatformat:2 }}</td> -->
+                    <td>
+                        {% if order.address %}
+                            {{ order.address.address }}, {{ order.address.city }}
+                        {% else %}
+                            No Address Provided
+                        {% endif %}
+                    </td>
+                    <td>{{ order.created_at|date:"d M Y, H:i" }}</td>
+                    <td>{{ order.expected_date }}</td>
+                    <td>{{ order.payment_method }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</body>
+</html>
+
+
+{% include 'footer.html' %}
